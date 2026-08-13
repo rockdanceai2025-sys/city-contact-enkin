@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-labelledby="kvTitle kvDesc">
+  <title id="kvTitle">遠近両用コンタクトレンズのキービジュアル</title>
+  <desc id="kvDesc">ぼやけていた遠くの街並みと手元のスマートフォンが、レンズを通すと同時にくっきり見えるイメージ</desc>
+
+  <defs>
+    <linearGradient id="kvSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#EAF6FC"/>
+      <stop offset="55%" stop-color="#D5ECF8"/>
+      <stop offset="100%" stop-color="#F7FBFD"/>
+    </linearGradient>
+    <linearGradient id="kvFar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8FC3DF"/>
+      <stop offset="100%" stop-color="#B9DCEC"/>
+    </linearGradient>
+    <linearGradient id="kvMid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5EA3C9"/>
+      <stop offset="100%" stop-color="#93C6E0"/>
+    </linearGradient>
+    <linearGradient id="kvDesk" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F3E3D6"/>
+      <stop offset="100%" stop-color="#E5CDB9"/>
+    </linearGradient>
+    <linearGradient id="kvRing" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#16B8C8"/>
+      <stop offset="45%" stop-color="#0E6FB8"/>
+      <stop offset="100%" stop-color="#16B8C8"/>
+    </linearGradient>
+    <radialGradient id="kvGlass" cx="35%" cy="28%" r="80%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity=".55"/>
+      <stop offset="45%" stop-color="#FFFFFF" stop-opacity=".08"/>
+      <stop offset="100%" stop-color="#0E6FB8" stop-opacity=".10"/>
+    </radialGradient>
+    <radialGradient id="kvGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#16B8C8" stop-opacity=".28"/>
+      <stop offset="100%" stop-color="#16B8C8" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="kvBlur" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="9"/>
+    </filter>
+    <filter id="kvSoft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+    <filter id="kvShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="16" stdDeviation="22" flood-color="#0A3A5C" flood-opacity=".22"/>
+    </filter>
+
+    <clipPath id="kvLensClip"><circle cx="600" cy="462" r="272"/></clipPath>
+
+    <!-- 生活シーン：遠く（街並み）と近く（手元）を1枚に -->
+    <g id="kvScene">
+      <rect x="0" y="0" width="1200" height="800" fill="url(#kvSky)"/>
+      <circle cx="985" cy="150" r="86" fill="#FFFFFF" opacity=".65"/>
+      <circle cx="905" cy="196" r="54" fill="#FFFFFF" opacity=".45"/>
+
+      <!-- 遠景：街並み -->
+      <g fill="url(#kvFar)" opacity=".85">
+        <rect x="60" y="300" width="74" height="230" rx="4"/>
+        <rect x="150" y="352" width="58" height="178" rx="4"/>
+        <rect x="228" y="268" width="86" height="262" rx="4"/>
+        <rect x="336" y="336" width="62" height="194" rx="4"/>
+        <rect x="820" y="322" width="70" height="208" rx="4"/>
+        <rect x="906" y="262" width="92" height="268" rx="4"/>
+        <rect x="1018" y="344" width="64" height="186" rx="4"/>
+        <rect x="1100" y="300" width="72" height="230" rx="4"/>
+      </g>
+      <g fill="url(#kvMid)">
+        <rect x="404" y="356" width="78" height="174" rx="4"/>
+        <rect x="500" y="298" width="96" height="232" rx="4"/>
+        <rect x="616" y="340" width="74" height="190" rx="4"/>
+        <rect x="708" y="292" width="92" height="238" rx="4"/>
+        <polygon points="662,292 653,340 671,340"/>
+      </g>
+      <!-- 窓明かり -->
+      <g fill="#FFFFFF" opacity=".55">
+        <rect x="516" y="322" width="14" height="16" rx="2"/><rect x="546" y="322" width="14" height="16" rx="2"/>
+        <rect x="516" y="356" width="14" height="16" rx="2"/><rect x="546" y="356" width="14" height="16" rx="2"/>
+        <rect x="724" y="316" width="14" height="16" rx="2"/><rect x="754" y="316" width="14" height="16" rx="2"/>
+        <rect x="724" y="350" width="14" height="16" rx="2"/><rect x="754" y="350" width="14" height="16" rx="2"/>
+        <rect x="928" y="292" width="14" height="16" rx="2"/><rect x="958" y="292" width="14" height="16" rx="2"/>
+        <rect x="246" y="298" width="14" height="16" rx="2"/><rect x="276" y="298" width="14" height="16" rx="2"/>
+      </g>
+      <!-- 街路樹 -->
+      <g>
+        <circle cx="186" cy="500" r="34" fill="#7FBEA4"/><rect x="181" y="500" width="10" height="42" fill="#9A8069"/>
+        <circle cx="1024" cy="498" r="30" fill="#7FBEA4"/><rect x="1019" y="498" width="10" height="42" fill="#9A8069"/>
+      </g>
+
+      <!-- 手元：デスク -->
+      <rect x="0" y="530" width="1200" height="270" fill="url(#kvDesk)"/>
+      <rect x="0" y="530" width="1200" height="8" fill="#FFFFFF" opacity=".5"/>
+
+      <!-- スマートフォン -->
+      <g transform="rotate(-8 350 660)">
+        <rect x="246" y="556" width="208" height="220" rx="22" fill="#2F3E4C"/>
+        <rect x="258" y="570" width="184" height="192" rx="14" fill="#FBFDFE"/>
+        <rect x="274" y="588" width="152" height="12" rx="6" fill="#CBDCE7"/>
+        <rect x="274" y="612" width="120" height="10" rx="5" fill="#DCE7EF"/>
+        <rect x="274" y="632" width="140" height="10" rx="5" fill="#DCE7EF"/>
+        <rect x="274" y="652" width="104" height="10" rx="5" fill="#DCE7EF"/>
+        <rect x="274" y="680" width="152" height="10" rx="5" fill="#DCE7EF"/>
+        <rect x="274" y="700" width="126" height="10" rx="5" fill="#DCE7EF"/>
+        <rect x="274" y="726" width="88" height="22" rx="11" fill="#16B8C8" opacity=".85"/>
+      </g>
+
+      <!-- 開いた本／手帳 -->
+      <g transform="rotate(6 880 690)">
+        <rect x="726" y="600" width="310" height="176" rx="10" fill="#FFFFFF"/>
+        <rect x="726" y="600" width="310" height="176" rx="10" fill="none" stroke="#E3D3C3" stroke-width="3"/>
+        <line x1="881" y1="606" x2="881" y2="770" stroke="#E9DBCC" stroke-width="4"/>
+        <g fill="#C3D3DE">
+          <rect x="748" y="630" width="112" height="9" rx="4.5"/>
+          <rect x="748" y="652" width="112" height="9" rx="4.5"/>
+          <rect x="748" y="674" width="92" height="9" rx="4.5"/>
+          <rect x="748" y="696" width="112" height="9" rx="4.5"/>
+          <rect x="748" y="718" width="76" height="9" rx="4.5"/>
+          <rect x="900" y="630" width="112" height="9" rx="4.5"/>
+          <rect x="900" y="652" width="98" height="9" rx="4.5"/>
+          <rect x="900" y="674" width="112" height="9" rx="4.5"/>
+          <rect x="900" y="696" width="84" height="9" rx="4.5"/>
+        </g>
+      </g>
+
+      <!-- コーヒーカップ -->
+      <g>
+        <ellipse cx="560" cy="768" rx="62" ry="14" fill="#D4B79E" opacity=".55"/>
+        <path d="M508 690h96v46a26 26 0 0 1-26 26h-44a26 26 0 0 1-26-26z" fill="#FFFFFF"/>
+        <path d="M604 700h16a20 20 0 0 1 0 40h-16z" fill="none" stroke="#FFFFFF" stroke-width="10"/>
+        <ellipse cx="556" cy="690" rx="48" ry="12" fill="#F0F6FA"/>
+        <ellipse cx="556" cy="691" rx="38" ry="9" fill="#9C6B4A"/>
+      </g>
+    </g>
+  </defs>
+
+  <!-- 1) ぼやけた世界（裸眼・老眼のイメージ） -->
+  <use href="#kvScene" filter="url(#kvBlur)"/>
+  <rect x="0" y="0" width="1200" height="800" fill="#0E6FB8" opacity=".05"/>
+
+  <!-- 2) レンズの中だけ、くっきり -->
+  <circle cx="600" cy="462" r="316" fill="url(#kvGlow)" filter="url(#kvSoft)"/>
+  <g filter="url(#kvShadow)">
+    <g clip-path="url(#kvLensClip)">
+      <use href="#kvScene"/>
+      <rect x="0" y="0" width="1200" height="800" fill="#FFFFFF" opacity=".06"/>
+      <rect x="0" y="0" width="1200" height="800" fill="url(#kvGlass)"/>
+    </g>
+    <circle cx="600" cy="462" r="272" fill="none" stroke="url(#kvRing)" stroke-width="7"/>
+    <circle cx="600" cy="462" r="256" fill="none" stroke="#FFFFFF" stroke-width="2" opacity=".7"/>
+  </g>
+  <!-- ハイライト -->
+  <path d="M436 336a224 224 0 0 1 122-66" fill="none" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round" opacity=".7"/>
+  <path d="M736 616a224 224 0 0 1-72 42" fill="none" stroke="#FFFFFF" stroke-width="9" stroke-linecap="round" opacity=".45"/>
+</svg>

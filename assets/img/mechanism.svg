@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" width="900" height="560" role="img" aria-labelledby="mecTitle mecDesc">
+  <title id="mecTitle">遠近両用コンタクトレンズの構造</title>
+  <desc id="mecDesc">1枚のレンズの中に遠くを見るための度数と近くを見るための度数が同心円状に配置され、脳が必要な像を選び取る「同時視」の仕組み</desc>
+  <defs>
+    <linearGradient id="mFar" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0E6FB8"/><stop offset="100%" stop-color="#4FA3D8"/>
+    </linearGradient>
+    <linearGradient id="mNear" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#16B8C8"/><stop offset="100%" stop-color="#7FE0E4"/>
+    </linearGradient>
+    <linearGradient id="mMid" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7FC4E4"/><stop offset="100%" stop-color="#BFE6F2"/>
+    </linearGradient>
+    <filter id="mShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#0A3A5C" flood-opacity=".16"/>
+    </filter>
+  </defs>
+
+  <rect x="0" y="0" width="900" height="560" fill="#F5FAFD"/>
+
+  <!-- レンズ断面（同心円デザイン） -->
+  <g transform="translate(250 270)" filter="url(#mShadow)">
+    <circle r="180" fill="#FFFFFF"/>
+    <circle r="180" fill="url(#mFar)" opacity=".92"/>
+    <circle r="128" fill="url(#mMid)"/>
+    <circle r="76" fill="url(#mNear)"/>
+    <circle r="180" fill="none" stroke="#FFFFFF" stroke-width="3" opacity=".8"/>
+    <circle r="128" fill="none" stroke="#FFFFFF" stroke-width="3" opacity=".8"/>
+    <circle r="76" fill="none" stroke="#FFFFFF" stroke-width="3" opacity=".8"/>
+    <!-- 瞳孔ガイド -->
+    <circle r="34" fill="#0A3A5C" opacity=".18"/>
+  </g>
+
+  <!-- ラベル -->
+  <g font-family="'Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif">
+    <g>
+      <line x1="250" y1="270" x2="560" y2="150" stroke="#16B8C8" stroke-width="2" stroke-dasharray="5 5"/>
+      <circle cx="250" cy="270" r="5" fill="#16B8C8"/>
+      <rect x="560" y="118" width="292" height="64" rx="12" fill="#FFFFFF" stroke="#16B8C8" stroke-width="2"/>
+      <text x="582" y="146" font-size="21" font-weight="700" fill="#0A3A5C">中心：近くを見る度数</text>
+      <text x="582" y="170" font-size="15" fill="#4A6274">スマホ・本・値札・手元の作業に</text>
+    </g>
+    <g>
+      <line x1="352" y1="270" x2="560" y2="270" stroke="#7FC4E4" stroke-width="2" stroke-dasharray="5 5"/>
+      <circle cx="352" cy="270" r="5" fill="#7FC4E4"/>
+      <rect x="560" y="238" width="292" height="64" rx="12" fill="#FFFFFF" stroke="#7FC4E4" stroke-width="2"/>
+      <text x="582" y="266" font-size="21" font-weight="700" fill="#0A3A5C">中間：中間距離の度数</text>
+      <text x="582" y="290" font-size="15" fill="#4A6274">パソコン・車のメーター・会話に</text>
+    </g>
+    <g>
+      <line x1="404" y1="386" x2="560" y2="390" stroke="#0E6FB8" stroke-width="2" stroke-dasharray="5 5"/>
+      <circle cx="404" cy="386" r="5" fill="#0E6FB8"/>
+      <rect x="560" y="358" width="292" height="64" rx="12" fill="#FFFFFF" stroke="#0E6FB8" stroke-width="2"/>
+      <text x="582" y="386" font-size="21" font-weight="700" fill="#0A3A5C">外側：遠くを見る度数</text>
+      <text x="582" y="410" font-size="15" fill="#4A6274">運転・景色・人の顔・標識に</text>
+    </g>
+
+    <text x="70" y="500" font-size="16" fill="#4A6274">※レンズのデザインはメーカー・製品により異なります。図はイメージです。</text>
+    <text x="250" y="62" font-size="24" font-weight="700" fill="#0A3A5C" text-anchor="middle">1枚のレンズに、複数の度数。</text>
+  </g>
+</svg>

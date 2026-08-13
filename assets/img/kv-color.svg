@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" width="1000" height="700" role="img" aria-labelledby="kvcTitle kvcDesc">
+  <title id="kvcTitle">遠近両用カラーコンタクトのイメージ</title>
+  <desc id="kvcDesc">やわらかな光の中、ナチュラルに色づいた瞳のクローズアップ。手元も遠くも見えるうえに、印象まで明るくなるイメージ</desc>
+  <defs>
+    <linearGradient id="kcBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FDF3EC"/><stop offset="60%" stop-color="#F6E7DC"/><stop offset="100%" stop-color="#EFF6FA"/>
+    </linearGradient>
+    <radialGradient id="kcIris" cx="50%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#5A3520"/><stop offset="45%" stop-color="#9A6A3E"/>
+      <stop offset="78%" stop-color="#B98A57"/><stop offset="100%" stop-color="#5E3A20"/>
+    </radialGradient>
+    <radialGradient id="kcSoft" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity=".9"/><stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="kcSkin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F7E2D2"/><stop offset="100%" stop-color="#EBCDB6"/>
+    </linearGradient>
+    <filter id="kcBlur" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="16"/></filter>
+    <filter id="kcShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#6B4327" flood-opacity=".22"/>
+    </filter>
+  </defs>
+
+  <rect width="1000" height="700" fill="url(#kcBg)"/>
+  <!-- やわらかな光の玉 -->
+  <g filter="url(#kcBlur)" opacity=".7">
+    <circle cx="150" cy="130" r="90" fill="#FFFFFF" opacity=".8"/>
+    <circle cx="860" cy="120" r="70" fill="#FFE7CF"/>
+    <circle cx="900" cy="560" r="110" fill="#DCEEF6"/>
+    <circle cx="120" cy="600" r="80" fill="#FBE0D2"/>
+  </g>
+
+  <!-- 肌のベース -->
+  <ellipse cx="500" cy="360" rx="420" ry="250" fill="url(#kcSkin)" opacity=".75" filter="url(#kcBlur)"/>
+
+  <!-- 目 -->
+  <g transform="translate(500 350)" filter="url(#kcShadow)">
+    <path d="M-300 0c86-128 200-192 300-192S214-128 300 0c-86 128-200 192-300 192S-214 128-300 0z" fill="#FFFFFF"/>
+    <clipPath id="kcEye">
+      <path d="M-300 0c86-128 200-192 300-192S214-128 300 0c-86 128-200 192-300 192S-214 128-300 0z"/>
+    </clipPath>
+    <g clip-path="url(#kcEye)">
+      <ellipse cx="0" cy="-10" rx="320" ry="200" fill="#F4F8FB"/>
+      <!-- 虹彩 -->
+      <circle cx="10" cy="-6" r="150" fill="url(#kcIris)"/>
+      <!-- 着色リング（カラコンの縁） -->
+      <circle cx="10" cy="-6" r="150" fill="none" stroke="#3E2415" stroke-width="20" opacity=".55"/>
+      <circle cx="10" cy="-6" r="128" fill="none" stroke="#C79A66" stroke-width="3" opacity=".45"/>
+      <!-- 虹彩の繊維 -->
+      <g stroke="#E0BA8C" stroke-width="2" opacity=".38">
+        <line x1="10" y1="-6" x2="10" y2="-140"/><line x1="10" y1="-6" x2="120" y2="-70"/>
+        <line x1="10" y1="-6" x2="140" y2="20"/><line x1="10" y1="-6" x2="90" y2="110"/>
+        <line x1="10" y1="-6" x2="-30" y2="136"/><line x1="10" y1="-6" x2="-110" y2="80"/>
+        <line x1="10" y1="-6" x2="-134" y2="-40"/><line x1="10" y1="-6" x2="-70" y2="-124"/>
+      </g>
+      <!-- 瞳孔（＝近くを見る度数が入る中心部） -->
+      <circle cx="10" cy="-6" r="58" fill="#1B120B"/>
+      <circle cx="10" cy="-6" r="58" fill="none" stroke="#16B8C8" stroke-width="4" opacity=".65"/>
+      <!-- ハイライト -->
+      <circle cx="-42" cy="-58" r="34" fill="#FFFFFF" opacity=".92"/>
+      <circle cx="52" cy="46" r="16" fill="#FFFFFF" opacity=".6"/>
+      <circle cx="-70" cy="30" r="9" fill="#FFFFFF" opacity=".45"/>
+      <!-- 上まぶたの影 -->
+      <path d="M-320-200h640v120c-86-70-200-104-320-104S-234-170-320-80z" fill="#E4C6AE" opacity=".55"/>
+    </g>
+    <!-- まつ毛・アイライン -->
+    <path d="M-300 0c86-128 200-192 300-192S214-128 300 0" fill="none" stroke="#2E2019" stroke-width="14" stroke-linecap="round"/>
+    <path d="M-300 0c86 128 200 192 300 192S214 128 300 0" fill="none" stroke="#4A3428" stroke-width="6" stroke-linecap="round" opacity=".7"/>
+    <g stroke="#2E2019" stroke-width="9" stroke-linecap="round">
+      <path d="M-268-46c-16-14-30-22-46-26"/>
+      <path d="M-196-108c-12-20-22-32-34-42"/>
+      <path d="M-108-158c-6-22-12-36-18-50"/>
+      <path d="M-8-186c0-24 2-38 4-54"/>
+      <path d="M96-176c8-22 14-36 20-50"/>
+      <path d="M192-134c14-18 24-30 34-42"/>
+      <path d="M262-70c18-12 32-18 48-22"/>
+    </g>
+    <!-- 眉 -->
+    <path d="M-280-260c110-64 300-70 420-24" fill="none" stroke="#54402F" stroke-width="26" stroke-linecap="round" opacity=".45" transform="translate(-30 -30)"/>
+  </g>
+
+  <!-- きらめき -->
+  <g fill="#FFFFFF" opacity=".9">
+    <path d="M780 200l8 22 22 8-22 8-8 22-8-22-22-8 22-8z"/>
+    <path d="M232 236l6 16 16 6-16 6-6 16-6-16-16-6 16-6z"/>
+    <path d="M720 520l5 14 14 5-14 5-5 14-5-14-14-5 14-5z"/>
+  </g>
+</svg>

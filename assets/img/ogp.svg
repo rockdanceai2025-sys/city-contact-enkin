@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="誰にも気づかれずに、世界が変わる。遠近両用コンタクトレンズ｜シティコンタクト">
+  <defs>
+    <linearGradient id="oBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0A3A5C"/><stop offset="55%" stop-color="#0E6FB8"/><stop offset="100%" stop-color="#16B8C8"/>
+    </linearGradient>
+    <radialGradient id="oGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity=".35"/><stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#oBg)"/>
+  <circle cx="960" cy="315" r="300" fill="url(#oGlow)"/>
+  <g transform="translate(960 315)">
+    <circle r="190" fill="#FFFFFF" opacity=".10"/>
+    <circle r="190" fill="none" stroke="#FFFFFF" stroke-width="5" opacity=".9"/>
+    <circle r="128" fill="none" stroke="#FFFFFF" stroke-width="3" opacity=".6"/>
+    <circle r="66" fill="none" stroke="#FFFFFF" stroke-width="3" opacity=".45"/>
+    <circle r="18" fill="#FFFFFF" opacity=".85"/>
+  </g>
+  <g font-family="'Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif" fill="#FFFFFF">
+    <text x="90" y="230" font-size="34" font-weight="700" opacity=".85" letter-spacing="6">BIFOCAL CONTACT LENS</text>
+    <text x="90" y="322" font-size="60" font-weight="700">誰にも気づかれずに、</text>
+    <text x="90" y="398" font-size="60" font-weight="700">世界が変わる。</text>
+    <rect x="90" y="440" width="120" height="4" fill="#FFFFFF" opacity=".8"/>
+    <text x="90" y="500" font-size="28">遠近両用コンタクトレンズ ／ 遠近両用カラコン</text>
+    <text x="90" y="556" font-size="26" font-weight="700" opacity=".9">シティコンタクト</text>
+  </g>
+</svg>
