@@ -30,6 +30,7 @@
 │   └── build-preview.py    … preview.html を作り直すスクリプト
 ├── docs/
 │   └── site-structure.md   … サイト構成案・原稿の設計意図・掲載時の注意
+├── .nojekyll               … GitHub Pages をそのまま公開するための設定ファイル
 └── README.md
 ```
 
@@ -41,15 +42,28 @@ CSS・JS・画像をすべて埋め込んだ1ファイル版です。
 ダウンロードしてダブルクリックすれば、サーバーもネット接続もなしでそのまま開けます。
 ※ 内容を更新したら `python3 tools/build-preview.py` で作り直してください。
 
-### 2. GitHub Pages で URL を発行する
+### 2. GitHub Pages で URL を発行する（推奨）
 
-1. GitHubのリポジトリを開く → 上部の **Settings**
+公開URL（発行後はここで見られます）:
+**<https://rockdanceai2025-sys.github.io/city-contact-enkin/>**
+
+設定はGitHubの画面から1回だけ行います。
+
+1. GitHubのリポジトリを開く → 上部の **Settings**（設定）
 2. 左メニューの **Pages**
-3. Source で **Deploy from a branch** を選択
-4. Branch に **`claude/bifocal-contact-page-sgj58u`** ／ フォルダは **`/ (root)`** を選んで **Save**
-5. 1〜2分後、`https://rockdanceai2025-sys.github.io/city-contact-enkin/` で閲覧できます
+3. Source（ソース）で **Deploy from a branch** を選択
+4. Branch（ブランチ）で **`claude/shunnsai-megumi-lp-thread-edit-vegobz`** を選ぶ
+5. その右のフォルダは **`/ (root)`** のまま → **Save**
+6. 1〜2分待つと、上記のURLで閲覧できます（スマホからもOK・URLで共有できます）
 
-（スマホからも確認でき、URLで共有もできます）
+> **ブランチはどれを選べばいい？**
+> チャット（スレッド）での修正はすべて
+> **`claude/shunnsai-megumi-lp-thread-edit-vegobz`** に反映されます。
+> ここを選んでおくと、修正のたびに1〜2分で公開URLの中身が自動で新しくなります。
+> 別のブランチを選んでいる場合、チャットでの修正は公開URLに反映されません。
+
+うまく表示されないときは、ブラウザで **Ctrl + F5**（Macは Cmd + Shift + R）を押して
+キャッシュを消してから読み込み直してください。
 
 **検索エンジン対策について**
 このページには `<meta name="robots" content="noindex, nofollow">` を入れてあるため、
@@ -63,6 +77,36 @@ GitHub Pagesで公開してもGoogleなどの検索結果には表示されま�
 python3 -m http.server 8000
 # → http://localhost:8000/ をブラウザで開く
 ```
+
+## チャット（スレッド）で修正を依頼する
+
+このページは、Claude とのチャットで日本語で伝えるだけで修正できます。
+GitHubの操作やコマンドの入力は不要です。
+
+**修正が公開URLに反映されるまでの流れ**
+
+1. チャットで「〇〇を直して」と伝える
+2. Claude が `index.html` などを書き換えて、
+   ブランチ `claude/shunnsai-megumi-lp-thread-edit-vegobz` に保存（push）する
+3. GitHub Pages が自動で作り直す（1〜2分）
+4. <https://rockdanceai2025-sys.github.io/city-contact-enkin/> を再読み込みすると新しい内容になっている
+
+**伝え方の例**
+
+- 「ファーストビューのキャッチコピーを『〇〇』に変えて」
+- 「料金表に『△△プラン 5,500円』の行を追加して」
+- 「ピンクをもう少し落ち着いた色にして」
+- 「よくある質問に『装用時間の目安は？』を足して」
+- 「YouTubeの動画枠に `https://youtu.be/xxxx` を入れて」
+
+**修正をお願いするときのコツ**
+
+- どのセクションかを添える（例：「FAQの3つ目」「電話番号の下」）
+- 文言はそのまま貼り付けてもらえると、間違いなく反映できます
+- 画像の差し替えは、画像ファイルをチャットに添付してください
+
+> `preview.html`（1ファイル版）も修正のたびに作り直して保存します。
+> 最新版は GitHub の画面右上 **Code → Download ZIP** から取得できます。
 
 ## コーポレートサイトへの組み込み手順
 
