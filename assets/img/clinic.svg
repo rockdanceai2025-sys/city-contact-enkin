@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440" role="img" aria-labelledby="clTitle clDesc">
-  <title id="clTitle">眼科提携だから実現する安心の処方フロー</title>
-  <desc id="clDesc">提携眼科で医師の診察と処方を受け、その処方をもとにシティコンタクト店舗でレンズを選べる流れの図</desc>
+  <title id="clTitle">全店眼科併設だから実現する安心の処方フロー</title>
+  <desc id="clDesc">併設の眼科で医師の診察と処方を受け、その処方をもとにシティコンタクト店舗でレンズを選べる流れの図</desc>
   <defs>
     <linearGradient id="clHos" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#F292AF"/><stop offset="100%" stop-color="#F5A9C0"/>
@@ -21,7 +21,7 @@
       <rect x="60" y="120" width="330" height="230" rx="20" fill="#FFFFFF"/>
       <path d="M60 140a20 20 0 0 1 20-20h290a20 20 0 0 1 20 20v46H60z" fill="url(#clHos)"/>
     </g>
-    <text x="225" y="163" text-anchor="middle" font-size="22" font-weight="700" fill="#FFFFFF">提携の眼科</text>
+    <text x="225" y="163" text-anchor="middle" font-size="22" font-weight="700" fill="#FFFFFF">併設の眼科</text>
     <!-- 医師 -->
     <g transform="translate(150 252)">
       <path d="M-30 46c0-24 13-40 30-40s30 16 30 40z" fill="#FFFFFF" stroke="#F0D3DC" stroke-width="3"/>
@@ -45,7 +45,7 @@
       <path d="M0 0h70" stroke="#E4638A" stroke-width="6" stroke-linecap="round"/>
       <path d="M62 -12l20 12-20 12z" fill="#E4638A"/>
       <text x="42" y="-26" text-anchor="middle" font-size="14" font-weight="700" fill="#C2456C">処方せん</text>
-      <text x="42" y="44" text-anchor="middle" font-size="13" fill="#8A7C82">そのままご来店</text>
+      <text x="42" y="44" text-anchor="middle" font-size="13" fill="#8A7C82">その場でご来店</text>
     </g>
 
     <!-- 店舗 -->
@@ -73,6 +73,6 @@
     </g>
 
     <text x="480" y="66" text-anchor="middle" font-size="26" font-weight="700" fill="#C2456C">診察から処方、レンズ選びまで、ひとつづきに。</text>
-    <text x="480" y="400" text-anchor="middle" font-size="14" fill="#A2949A">※ 眼科の提携・併設状況、診療日は店舗により異なります。詳しくは各店舗ページをご確認ください。</text>
+    <text x="480" y="400" text-anchor="middle" font-size="14" fill="#A2949A">※ 眼科の診療日・診療時間は店舗により異なります。詳しくは各店舗ページをご確認ください。</text>
   </g>
 </svg>

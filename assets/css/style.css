@@ -247,7 +247,7 @@ table { border-collapse: collapse; width: 100%; }
 .p-sim__switch[aria-pressed="true"]::after { transform: translateX(36px); }
 .p-sim__state { font-weight: 700; font-size: 14px; }
 
-/* ---------- 眼科提携 ---------- */
+/* ---------- 全店眼科併設 ---------- */
 .p-clinic { background: linear-gradient(170deg, #fff7fa 0%, #fdeff3 100%); }
 .p-clinic__badge {
   display: inline-block; background: var(--c-primary); color: #fff;
