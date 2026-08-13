@@ -1,27 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="誰にも気づかれずに、世界が変わる。遠近両用コンタクトレンズ｜シティコンタクト">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="大人の瞳を快適に。眼科提携で安心の遠近両用レンズ｜シティコンタクト">
   <defs>
     <linearGradient id="oBg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#0A3A5C"/><stop offset="55%" stop-color="#0E6FB8"/><stop offset="100%" stop-color="#16B8C8"/>
+      <stop offset="0%" stop-color="#FFF3F6"/><stop offset="60%" stop-color="#FDE7EE"/><stop offset="100%" stop-color="#FBF3E9"/>
     </linearGradient>
-    <radialGradient id="oGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#FFFFFF" stop-opacity=".35"/><stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
-    </radialGradient>
+    <linearGradient id="oPink" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#E4638A"/><stop offset="100%" stop-color="#F292AF"/>
+    </linearGradient>
   </defs>
   <rect width="1200" height="630" fill="url(#oBg)"/>
-  <circle cx="960" cy="315" r="300" fill="url(#oGlow)"/>
-  <g transform="translate(960 315)">
-    <circle r="190" fill="#FFFFFF" opacity=".10"/>
-    <circle r="190" fill="none" stroke="#FFFFFF" stroke-width="5" opacity=".9"/>
-    <circle r="128" fill="none" stroke="#FFFFFF" stroke-width="3" opacity=".6"/>
-    <circle r="66" fill="none" stroke="#FFFFFF" stroke-width="3" opacity=".45"/>
-    <circle r="18" fill="#FFFFFF" opacity=".85"/>
+  <circle cx="1010" cy="315" r="250" fill="#FFFFFF" opacity=".55"/>
+  <g transform="translate(1010 315)">
+    <circle r="180" fill="none" stroke="url(#oPink)" stroke-width="26" opacity=".9"/>
+    <circle r="128" fill="none" stroke="#F292AF" stroke-width="3" opacity=".7"/>
+    <circle r="66" fill="none" stroke="#F5C9D7" stroke-width="3"/>
+    <path d="M-128-104a180 180 0 0 1 96-66" fill="none" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round"/>
   </g>
-  <g font-family="'Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif" fill="#FFFFFF">
-    <text x="90" y="230" font-size="34" font-weight="700" opacity=".85" letter-spacing="6">BIFOCAL CONTACT LENS</text>
-    <text x="90" y="322" font-size="60" font-weight="700">誰にも気づかれずに、</text>
-    <text x="90" y="398" font-size="60" font-weight="700">世界が変わる。</text>
-    <rect x="90" y="440" width="120" height="4" fill="#FFFFFF" opacity=".8"/>
-    <text x="90" y="500" font-size="28">遠近両用コンタクトレンズ ／ 遠近両用カラコン</text>
-    <text x="90" y="556" font-size="26" font-weight="700" opacity=".9">シティコンタクト</text>
+  <g font-family="'Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif">
+    <text x="90" y="200" font-size="26" font-weight="700" fill="#E4638A" letter-spacing="5">CITY CONTACT ／ 遠近両用レンズ</text>
+    <text x="90" y="300" font-size="54" font-weight="700" fill="#5C4A52">大人の瞳を快適に。</text>
+    <text x="90" y="374" font-size="54" font-weight="700" fill="#C2456C">眼科提携で安心の処方。</text>
+    <rect x="90" y="416" width="110" height="6" rx="3" fill="#E4638A"/>
+    <text x="90" y="480" font-size="26" fill="#6E5F66">遠近両用レンズ ／ 熟年世代向け遠近両用カラコン</text>
+    <text x="90" y="548" font-size="26" font-weight="700" fill="#5C4A52">シティコンタクト</text>
   </g>
 </svg>
