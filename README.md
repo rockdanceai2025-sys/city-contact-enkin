@@ -25,14 +25,33 @@
 │       ├── color-lens.svg  … カラーレンズ4色
 │       ├── ogp.svg         … OGP用ビジュアル（1200×630）
 │       └── favicon.svg     … ファビコン
+├── preview.html            … 確認用の1ファイル版（ダブルクリックで開けます／生成物）
+├── tools/
+│   └── build-preview.py    … preview.html を作り直すスクリプト
 ├── docs/
 │   └── site-structure.md   … サイト構成案・原稿の設計意図・掲載時の注意
 └── README.md
 ```
 
-## 表示確認
+## 表示確認（3つの方法）
 
-ビルド不要の静的HTMLです。ローカルで確認する場合：
+### 1. `preview.html` をダブルクリック（いちばん簡単）
+
+CSS・JS・画像をすべて埋め込んだ1ファイル版です。
+ダウンロードしてダブルクリックすれば、サーバーもネット接続もなしでそのまま開けます。
+※ 内容を更新したら `python3 tools/build-preview.py` で作り直してください。
+
+### 2. GitHub Pages で URL を発行する
+
+1. GitHubのリポジトリを開く → 上部の **Settings**
+2. 左メニューの **Pages**
+3. Source で **Deploy from a branch** を選択
+4. Branch に **`claude/bifocal-contact-page-sgj58u`** ／ フォルダは **`/ (root)`** を選んで **Save**
+5. 1〜2分後、`https://rockdanceai2025-sys.github.io/city-contact-enkin/` で閲覧できます
+
+（スマホからも確認でき、URLで共有もできます）
+
+### 3. ローカルでサーバーを立てる（開発者向け）
 
 ```bash
 python3 -m http.server 8000
