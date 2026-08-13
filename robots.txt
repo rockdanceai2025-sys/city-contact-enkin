@@ -1,0 +1,7 @@
+# 確認用サイトのため、全クローラーの巡回を禁止します。
+# ※ GitHub Pages のプロジェクトページ（/city-contact-enkin/ 配下）では
+#   このファイルは参照されません。実際の制御は index.html 内の
+#   <meta name="robots" content="noindex, nofollow"> が担っています。
+# ※ 本番（www.city-contact.com）へ設置する際は、このファイルは不要です。
+User-agent: *
+Disallow: /
