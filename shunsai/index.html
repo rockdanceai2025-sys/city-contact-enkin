@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>旬彩の恵｜確認用ページ</title>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --brown: #3d2b1f;
+    --gold:  #c9a96e;
+    --cream: #faf8f4;
+    --red:   #b5372a;
+  }
+
+  body {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    background: var(--cream);
+    color: var(--brown);
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+    line-height: 1.8;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 380px;
+    padding: 40px 28px;
+    background: #fff;
+    border: 1px solid rgba(201, 169, 110, .5);
+    border-radius: 4px;
+    box-shadow: 0 6px 28px rgba(61, 43, 31, .08);
+    text-align: center;
+  }
+
+  .mark {
+    font-size: 13px;
+    letter-spacing: .3em;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+
+  h1 { font-size: 21px; font-weight: 500; margin-bottom: 6px; }
+
+  .sub {
+    font-size: 13px;
+    color: #7a6050;
+    margin-bottom: 28px;
+  }
+
+  label {
+    display: block;
+    font-size: 13px;
+    text-align: left;
+    margin-bottom: 8px;
+  }
+
+  input {
+    width: 100%;
+    padding: 13px 14px;
+    font-size: 16px; /* 16px 未満だと iOS で拡大されるため */
+    font-family: inherit;
+    color: inherit;
+    background: var(--cream);
+    border: 1px solid rgba(61, 43, 31, .2);
+    border-radius: 3px;
+  }
+
+  input:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+
+  button {
+    width: 100%;
+    margin-top: 16px;
+    padding: 14px;
+    font-size: 15px;
+    font-family: inherit;
+    letter-spacing: .1em;
+    color: #fff;
+    background: var(--brown);
+    border: 0;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+
+  button:hover { background: #55402f; }
+  button:disabled { opacity: .55; cursor: default; }
+
+  .msg {
+    min-height: 22px;
+    margin-top: 14px;
+    font-size: 13px;
+    color: var(--red);
+  }
+
+  .note {
+    margin-top: 24px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(61, 43, 31, .1);
+    font-size: 12px;
+    color: #9a8574;
+    line-height: 1.7;
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <p class="mark">SHUNSAI NO MEGUMI</p>
+  <h1>旬彩の恵</h1>
+  <p class="sub">確認用ページ</p>
+
+  <form id="gate">
+    <label for="pw">パスワード</label>
+    <input type="password" id="pw" autocomplete="current-password" autofocus>
+    <button type="submit" id="go">閲覧する</button>
+  </form>
+
+  <p class="msg" id="msg"></p>
+
+  <p class="note">
+    このページは制作物の確認用です。<br>
+    パスワードは担当者よりお伝えしております。
+  </p>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  var ITERATIONS = 250000;
+  var KEY_STORE = 'shunsai-preview-pw';
+
+  var form = document.getElementById('gate');
+  var input = document.getElementById('pw');
+  var button = document.getElementById('go');
+  var msg = document.getElementById('msg');
+
+  function say(text, isError) {
+    msg.textContent = text;
+    msg.style.color = isError ? 'var(--red)' : '#7a6050';
+  }
+
+  // salt/iv を取り出して site.bin を復号する
+  function decrypt(password, buffer) {
+    var bytes = new Uint8Array(buffer);
+    var salt = bytes.slice(0, 16);
+    var iv = bytes.slice(16, 28);
+    var body = bytes.slice(28);
+    var enc = new TextEncoder();
+
+    return crypto.subtle
+      .importKey('raw', enc.encode(password), 'PBKDF2', false, ['deriveKey'])
+      .then(function (base) {
+        return crypto.subtle.deriveKey(
+          { name: 'PBKDF2', salt: salt, iterations: ITERATIONS, hash: 'SHA-256' },
+          base,
+          { name: 'AES-GCM', length: 256 },
+          false,
+          ['decrypt']
+        );
+      })
+      .then(function (key) {
+        return crypto.subtle.decrypt({ name: 'AES-GCM', iv: iv }, key, body);
+      });
+  }
+
+  // [4バイトの長さ][目次JSON][ファイル本体...] を分解する
+  function unpack(plain) {
+    var view = new DataView(plain);
+    var manifestLength = view.getUint32(0);
+    var bytes = new Uint8Array(plain);
+    var manifest = JSON.parse(
+      new TextDecoder().decode(bytes.slice(4, 4 + manifestLength))
+    );
+
+    var offset = 4 + manifestLength;
+    var files = {};
+    manifest.forEach(function (entry) {
+      files[entry.name] = new Blob([bytes.slice(offset, offset + entry.len)], {
+        type: entry.mime
+      });
+      offset += entry.len;
+    });
+    return files;
+  }
+
+  function render(files) {
+    var videoUrl = URL.createObjectURL(files['mp4.mp4']);
+    var sitemapUrl = URL.createObjectURL(files['sitemap.html']);
+
+    return files['index.html'].text().then(function (html) {
+      // 元のLPは同じフォルダにファイルがある前提なので、
+      // 復号したデータを指すURLに差し替える
+      html = html
+        .split('"mp4.mp4"').join('"' + videoUrl + '"')
+        .split('"sitemap.html"').join('"' + sitemapUrl + '"');
+
+      document.open();
+      document.write(html);
+      document.close();
+    });
+  }
+
+  function unlock(password, isAuto) {
+    button.disabled = true;
+    say('読み込んでいます…', false);
+
+    return fetch('site.bin')
+      .then(function (res) {
+        if (!res.ok) throw new Error('fetch-failed');
+        return res.arrayBuffer();
+      })
+      .then(function (buffer) {
+        return decrypt(password, buffer);
+      })
+      .then(function (plain) {
+        // 復号できた＝パスワードが正しい。次回以降は自動で開く
+        try { sessionStorage.setItem(KEY_STORE, password); } catch (e) {}
+        return render(unpack(plain));
+      })
+      .catch(function (err) {
+        try { sessionStorage.removeItem(KEY_STORE); } catch (e) {}
+        button.disabled = false;
+        if (err && err.message === 'fetch-failed') {
+          say('データを読み込めませんでした。通信環境をご確認ください。', true);
+        } else if (isAuto) {
+          say('', false);
+        } else {
+          say('パスワードが違います。', true);
+          input.select();
+        }
+      });
+  }
+
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    if (!input.value) return;
+    unlock(input.value, false);
+  });
+
+  if (!window.crypto || !crypto.subtle) {
+    say('お使いのブラウザでは表示できません。Chrome・Safari の最新版でお試しください。', true);
+    button.disabled = true;
+  } else {
+    // 同じタブで開き直したときはパスワード入力を省略する
+    var saved = null;
+    try { saved = sessionStorage.getItem(KEY_STORE); } catch (e) {}
+    if (saved) unlock(saved, true);
+  }
+})();
+</script>
+
+</body>
+</html>
