@@ -242,6 +242,25 @@ table { border-collapse: collapse; width: 100%; }
   letter-spacing: .08em; margin-bottom: 8px;
 }
 .p-scene__copy { font-size: clamp(17px, 2.2vw, 20px); font-weight: 700; line-height: 1.6; color: var(--c-text); }
+.p-scene__pair {
+  margin-top: 16px; padding-top: 14px; border-top: 1px dashed var(--c-line);
+  font-size: 13px; color: var(--c-text-sub); line-height: 2;
+}
+
+/* 遠く／近くのラベル */
+.p-scene__far, .p-scene__near, .p-scene__both {
+  display: inline-block; margin-right: 8px; padding: 2px 10px;
+  border-radius: 999px; font-size: 11px; font-weight: 700; color: #fff; vertical-align: 2px;
+}
+.p-scene__far { background: var(--c-primary-dark); }
+.p-scene__near { background: var(--c-primary); }
+.p-scene__both { background: #b9a7ae; }
+.p-scene__pair .p-scene__near { margin-left: 14px; }
+
+/* チェックの見出し */
+.p-check__label {
+  font-size: 16px; font-weight: 700; color: var(--c-text); margin-bottom: 12px;
+}
 
 /* ---------- 目の年齢チェック ---------- */
 .p-worry__result { font-size: clamp(16px, 2.2vw, 20px); font-weight: 700; line-height: 1.6; }
@@ -307,7 +326,8 @@ table { border-collapse: collapse; width: 100%; }
 }
 .p-sim__switch[aria-pressed="true"] { background: var(--c-primary); }
 .p-sim__switch[aria-pressed="true"]::after { transform: translateX(36px); }
-.p-sim__state { font-weight: 700; font-size: 14px; }
+.p-sim__state { font-weight: 700; font-size: 14px; line-height: 1.4; text-align: center; }
+.p-sim__state small { display: block; font-size: 11px; font-weight: 500; color: var(--c-text-sub); }
 
 /* ---------- 全店眼科併設 ---------- */
 .p-clinic { background: linear-gradient(170deg, #fff7fa 0%, #fdeff3 100%); }
