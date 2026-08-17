@@ -15,9 +15,12 @@ import re
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 
 
+MIME = {".svg": "image/svg+xml", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".png": "image/png"}
+
+
 def data_uri(path: pathlib.Path) -> str:
     b64 = base64.b64encode(path.read_bytes()).decode("ascii")
-    return f"data:image/svg+xml;base64,{b64}"
+    return f"data:{MIME[path.suffix.lower()]};base64,{b64}"
 
 
 def main() -> None:
@@ -38,8 +41,9 @@ def main() -> None:
     )
 
     # 画像（SVG）を data URI に置き換える
-    for svg in sorted((ROOT / "assets/img").glob("*.svg")):
-        html = html.replace(f"assets/img/{svg.name}", data_uri(svg))
+    for img in sorted((ROOT / "assets/img").iterdir()):
+        if img.suffix.lower() in MIME:
+            html = html.replace(f"assets/img/{img.name}", data_uri(img))
 
     out = ROOT / "preview.html"
     out.write_text(html, encoding="utf-8")
