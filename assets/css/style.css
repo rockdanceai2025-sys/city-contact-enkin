@@ -156,12 +156,25 @@ table { border-collapse: collapse; width: 100%; }
   padding: 7px 20px; border-radius: 999px;
 }
 .p-hero__lead { margin-top: 18px; font-size: clamp(15px, 2vw, 18px); font-weight: 700; color: var(--c-text-sub); }
-.p-hero__title {
-  margin-top: 6px;
-  font-size: clamp(25px, 3.1vw, 38px); font-weight: 700; line-height: 1.5;
+.p-hero__title { margin-top: 16px; }
+.p-hero__product {
+  display: inline-block;
+  background: var(--c-primary); color: #fff;
+  font-size: clamp(24px, 2.9vw, 36px); font-weight: 700; line-height: 1.4;
+  letter-spacing: .02em; padding: .18em .5em; border-radius: 14px;
+  box-shadow: 0 6px 16px rgba(228, 99, 138, .24);
+}
+.p-hero__product small {
+  font-size: .62em; font-weight: 700; margin-left: .35em;
+  padding: .1em .5em; border-radius: 8px;
+  background: rgba(255, 255, 255, .22);
+}
+.p-hero__catch {
+  display: block; margin-top: 18px;
+  font-size: clamp(18px, 2.2vw, 27px); font-weight: 700; line-height: 1.6;
   color: var(--c-text); letter-spacing: .01em;
 }
-.p-hero__title em { font-style: normal; color: var(--c-primary); }
+.p-hero__catch em { font-style: normal; color: var(--c-primary); }
 .p-hero__sub { margin-top: 20px; font-size: clamp(14px, 1.9vw, 17px); }
 .p-hero__concept {
   margin-top: 22px; display: inline-block;
