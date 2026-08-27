@@ -31,6 +31,8 @@
     <text x="407" y="29" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" font-size="19" font-weight="bold" fill="#9a6234" text-anchor="middle">立ち会い不要・鍵お預かり</text>
   </g>
 
+  <text x="1116" y="600" font-family="'Hiragino Mincho ProN','Noto Serif JP',serif" font-size="27" font-weight="bold" fill="#17304a" text-anchor="end">片づけ処 つむぎ</text>
+
   <!-- 想い出箱 -->
   <g transform="translate(846 212)">
     <ellipse cx="130" cy="252" rx="150" ry="20" fill="#e2d2b8" opacity="0.7"/>
