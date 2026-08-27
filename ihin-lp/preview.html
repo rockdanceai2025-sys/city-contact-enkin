@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>遺品整理・実家じまい｜福岡県全域対応｜追加料金なし・立ち会い不要・供養＆買取まで｜片づけ処 つむぎ</title>
-<meta name="description" content="福岡県全域の遺品整理・実家じまいはお任せください。お見積もり後の追加料金は一切なし。立ち会い不要の鍵お預かり対応、仏壇・人形の合同供養手配、家財・骨董品の買取相殺までワンストップ。1K 38,000円〜、明朗なコミコミ価格でご案内します。無料お見積もり受付中。">
+<meta name="description" content="福岡県全域の遺品整理・実家じまいはお任せください。お見積もり後の追加料金は一切なし。立ち会い不要の鍵お預かり対応、仏壇・人形の合同供養手配、家財・骨董品の買取相殺までワンストップ。1R・1K 25,000円〜、明朗なコミコミ価格でご案内します。無料お見積もり受付中。">
 <meta name="keywords" content="遺品整理,実家じまい,福岡,福岡県,遺品買取,生前整理,空き家整理,遺品供養,立ち会い不要">
 
 <!-- ================================================================
@@ -369,6 +369,54 @@ table { border-collapse: collapse; width: 100%; }
 .p-worry__catch strong { color: var(--c-earth-dark); }
 
 /* =========================================================
+   サービス内容（3本柱）
+   ========================================================= */
+.p-service__list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+}
+.p-service__item {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 38px 32px 34px;
+  box-shadow: var(--shadow-sm);
+}
+.p-service__icon {
+  width: 84px; height: 84px;
+  margin-bottom: 20px;
+  border-radius: 50%;
+  background: var(--c-earth-pale);
+  display: grid;
+  place-items: center;
+}
+.p-service__icon svg { width: 44px; height: 44px; }
+.p-service__title {
+  font-family: var(--font-serif);
+  font-size: clamp(20px, 2.6vw, 24px);
+  font-weight: 600;
+  color: var(--c-navy);
+  line-height: 1.55;
+  /* 見出しの行数が違ってもカード間で下線の位置が揃うように */
+  min-height: 3.1em;
+  padding-bottom: 16px;
+  margin-bottom: 18px;
+  border-bottom: 2px solid var(--c-earth-light);
+}
+.p-service__text { font-size: 16px; color: var(--c-text); }
+.p-service__alert {
+  background: var(--c-earth-pale);
+  border-left: 4px solid var(--c-earth);
+  border-radius: 0 10px 10px 0;
+  padding: 16px 18px;
+  margin-bottom: 16px;
+  font-size: 15.5px;
+  line-height: 1.9;
+  color: var(--c-earth-dark);
+}
+.p-service__alert b { color: var(--c-earth-dark); }
+
+/* =========================================================
    SECTION 03 選ばれる理由
    ========================================================= */
 .p-reason__list { display: grid; gap: 26px; }
@@ -432,7 +480,7 @@ table { border-collapse: collapse; width: 100%; }
    ========================================================= */
 .p-price__table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 .p-price__table {
-  min-width: 640px;
+  min-width: 720px;
   background: #fff;
   border-radius: var(--radius);
   overflow: hidden;
@@ -451,7 +499,8 @@ table { border-collapse: collapse; width: 100%; }
   font-weight: 700;
   border-bottom: none;
 }
-.p-price__table thead th:first-child { width: 30%; }
+.p-price__table thead th:first-child { width: 26%; }
+.p-price__table thead th:nth-child(2) { width: 32%; }
 .p-price__table tbody th {
   font-family: var(--font-serif);
   font-size: 20px;
@@ -483,6 +532,7 @@ table { border-collapse: collapse; width: 100%; }
   letter-spacing: .01em;
 }
 .p-price__yen small { font-size: 14px; font-weight: 500; color: var(--c-text-sub); }
+.p-price__time { font-size: 15.5px; color: var(--c-text-sub); font-weight: 500; }
 .p-price__table tbody tr:last-child th,
 .p-price__table tbody tr:last-child td { border-bottom: none; }
 
@@ -994,6 +1044,7 @@ table { border-collapse: collapse; width: 100%; }
    Responsive
    ========================================================= */
 @media (max-width: 980px) {
+  .p-service__list { grid-template-columns: 1fr; }
   .p-fv__inner { grid-template-columns: 1fr; gap: 32px; }
   .p-fv__visual { order: -1; }
   .p-case__body { grid-template-columns: 1fr; }
@@ -1028,6 +1079,10 @@ table { border-collapse: collapse; width: 100%; }
   .p-fv__cta { flex-direction: column; }
   .c-btn { width: 100%; padding: 17px 20px; }
   .p-worry__list { grid-template-columns: 1fr; }
+  .p-service__list { grid-template-columns: 1fr; }
+  .p-service__item { padding: 30px 24px 28px; }
+  .p-service__icon { margin: 0 auto 18px; }
+  .p-service__title { text-align: center; }
   .p-worry__item { padding: 20px 20px; font-size: 16.5px; }
   .p-reason__item {
     grid-template-columns: 1fr;
@@ -1168,6 +1223,72 @@ table { border-collapse: collapse; width: 100%; }
 </section>
 
 <!-- ================================================================
+     サービス内容（3本柱）
+     ================================================================ -->
+<section class="p-section p-section--cream">
+  <div class="l-inner">
+    <div class="c-head js-fade">
+      <span class="c-head__label">SERVICE</span>
+      <h2 class="c-head__title">サービス内容</h2>
+      <p class="c-head__lead">
+        私たちは、遺品整理や実家片付けに特化した、豊富な経験と専門的な技術を持ったスタッフで構成されています。<br>
+        あなたの心の整理を、私たちは最善の方法でサポートします。
+      </p>
+    </div>
+
+    <ul class="p-service__list">
+
+      <li class="p-service__item js-fade">
+        <div class="p-service__icon">
+          <svg viewBox="0 0 48 48" fill="none" stroke="#b87a44" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="10" y="6" width="28" height="36" rx="4" fill="#fbf1e4"/>
+            <path d="M17 16h14M17 23h14M17 30h8"/>
+            <circle cx="34" cy="33" r="9" fill="#ffffff"/>
+            <path d="M30 33.2l3 3 5.4-5.6"/>
+          </svg>
+        </div>
+        <h3 class="p-service__title">安心の見積もり・<br>追加料金不要</h3>
+        <p class="p-service__alert">
+          遺品整理業者の中でも、<b>訪問見積もりもせずに作業を開始し、作業終了後に思わぬ追加請求が発生する</b>ことも御座います。
+        </p>
+        <p class="p-service__text">
+          当社は事前に必ず訪問し、しっかりとお見積りをさせて頂いたうえでご契約をお願いしています。
+          ご提示した金額から、当日の追加請求は一切行いません。
+        </p>
+      </li>
+
+      <li class="p-service__item js-fade">
+        <div class="p-service__icon">
+          <svg viewBox="0 0 48 48" fill="none" stroke="#b87a44" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M24 5l5.6 11.6L42 18.4l-9 8.9 2.2 12.5L24 33.9l-11.2 5.9L15 27.3l-9-8.9 12.4-1.8z" fill="#fbf1e4"/>
+          </svg>
+        </div>
+        <h3 class="p-service__title">専門的な技術力</h3>
+        <p class="p-service__text">
+          遺品の分別や収納の仕方、そして実家片付けの際の丁寧な対応。
+          遺品整理の現場で培った豊富な知識と経験を、お客様の心に寄り添う形で提供します。
+        </p>
+      </li>
+
+      <li class="p-service__item js-fade">
+        <div class="p-service__icon">
+          <svg viewBox="0 0 48 48" fill="none" stroke="#b87a44" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M24 40c-9-7-14-12-14-18a7 7 0 0 1 13-4l1 2 1-2a7 7 0 0 1 13 4c0 6-5 11-14 18z" fill="#fbf1e4"/>
+            <path d="M18 23.5l4 4 8.5-8.5"/>
+          </svg>
+        </div>
+        <h3 class="p-service__title">丁寧な対応と信頼</h3>
+        <p class="p-service__text">
+          お客様の気持ちを大切にし、丁寧な対応を心がけています。
+          私たちは、お客様の信頼を大切にし、清潔で快適な空間を共に築いていきます。
+        </p>
+      </li>
+
+    </ul>
+  </div>
+</section>
+
+<!-- ================================================================
      SECTION 03 選ばれる5つの理由
      ================================================================ -->
 <section class="p-section">
@@ -1192,7 +1313,7 @@ table { border-collapse: collapse; width: 100%; }
           <h3 class="p-reason__title">丁寧な手作業仕分け<em>（手厚い人員配置）</em></h3>
           <p class="p-reason__text">
             写真1枚、手紙1通、通帳・印鑑にいたるまで、スタッフが手作業で徹底的に探索し、ご遺族へお渡しします。
-            まとめて機械的に運び出すことはいたしません。お部屋の規模に対して<b>2〜6名の手厚い体制</b>を組むのは、
+            まとめて機械的に運び出すことはいたしません。お部屋の規模に対して<b>2〜8名の手厚い体制</b>を組むのは、
             そのためのゆとりを確保するためです。
           </p>
           <p class="p-reason__note">見落としを防ぐ、二重チェックの仕分け作業</p>
@@ -1286,8 +1407,8 @@ table { border-collapse: collapse; width: 100%; }
   <div class="l-inner">
     <div class="c-head js-fade">
       <span class="c-head__label">PRICE</span>
-      <h2 class="c-head__title">間取り別 <em>料金表</em></h2>
-      <p class="c-head__lead">お部屋の規模に対して、あえて手厚い作業員体制でお見積もりしています。</p>
+      <h2 class="c-head__title">遺品整理の<em>料金目安</em>（間取り別）</h2>
+      <p class="c-head__lead">お部屋の広さに応じた目安料金です。家の状況や家財の量などにより変動します。</p>
     </div>
 
     <div class="p-price__table-wrap js-fade">
@@ -1295,40 +1416,41 @@ table { border-collapse: collapse; width: 100%; }
         <thead>
           <tr>
             <th scope="col">間取り</th>
-            <th scope="col">作業員数</th>
-            <th scope="col">料金の目安（税込）</th>
+            <th scope="col">料金目安</th>
+            <th scope="col">作業時間</th>
+            <th scope="col">作業員</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <th scope="row">1K<small>（〜20㎡目安）</small></th>
+            <th scope="row">1R・1K</th>
+            <td><span class="p-price__yen">25,000円<small>〜80,000円</small></span></td>
+            <td><span class="p-price__time">2〜4時間</span></td>
             <td><span class="p-price__staff">2名</span></td>
-            <td><span class="p-price__yen">38,000円 <small>〜 120,000円</small></span></td>
           </tr>
           <tr>
-            <th scope="row">1DK<small>（〜30㎡目安）</small></th>
-            <td><span class="p-price__staff">2名</span></td>
-            <td><span class="p-price__yen">60,000円 <small>〜 160,000円</small></span></td>
+            <th scope="row">1DK・1LDK</th>
+            <td><span class="p-price__yen">60,000円<small>〜150,000円</small></span></td>
+            <td><span class="p-price__time">3〜6時間</span></td>
+            <td><span class="p-price__staff">2〜3名</span></td>
           </tr>
           <tr>
-            <th scope="row">1LDK・2DK<small>（〜40㎡目安）</small></th>
-            <td><span class="p-price__staff">3名</span></td>
-            <td><span class="p-price__yen">100,000円 <small>〜 250,000円</small></span></td>
+            <th scope="row">2DK・2LDK</th>
+            <td><span class="p-price__yen">100,000円<small>〜250,000円</small></span></td>
+            <td><span class="p-price__time">4〜8時間</span></td>
+            <td><span class="p-price__staff">3〜4名</span></td>
           </tr>
           <tr>
-            <th scope="row">2LDK・3DK<small>（〜60㎡目安）</small></th>
-            <td><span class="p-price__staff">4名</span></td>
-            <td><span class="p-price__yen">150,000円 <small>〜 400,000円</small></span></td>
+            <th scope="row">3DK・3LDK</th>
+            <td><span class="p-price__yen">150,000円<small>〜400,000円</small></span></td>
+            <td><span class="p-price__time">1〜2日</span></td>
+            <td><span class="p-price__staff">4〜6名</span></td>
           </tr>
           <tr>
-            <th scope="row">3LDK・4DK<small>（〜80㎡目安）</small></th>
-            <td><span class="p-price__staff">5名</span></td>
-            <td><span class="p-price__yen">200,000円 <small>〜 500,000円</small></span></td>
-          </tr>
-          <tr>
-            <th scope="row">4LDK・5DK以上<small>（80㎡〜目安）</small></th>
-            <td><span class="p-price__staff">6名</span></td>
-            <td><span class="p-price__yen">250,000円 <small>〜 650,000円</small></span></td>
+            <th scope="row">4LDK以上・一戸建て</th>
+            <td><span class="p-price__yen">200,000円<small>〜</small></span></td>
+            <td><span class="p-price__time">1〜3日</span></td>
+            <td><span class="p-price__staff">4〜8名</span></td>
           </tr>
         </tbody>
       </table>
@@ -1345,7 +1467,8 @@ table { border-collapse: collapse; width: 100%; }
         <li>合同供養の手配</li>
       </ul>
       <p class="p-price__caution">
-        ※ 上記は目安金額です。お荷物の量・エレベーターの有無・搬出経路などにより変動します。正確な金額は無料の現地お見積もりでご提示します。<br>
+        ※ 上記はお部屋の広さに応じた目安料金です。家の状況や家財の量、エレベーターの有無、搬出経路などにより変動します。<br>
+        ※ <b>訪問見積もりで、正確な金額査定をさせて頂きます</b>ので、お気軽にご連絡ください。<br>
         ※ 一度ご提示したお見積もり金額から、当日の追加請求は行いません。<br>
         ※ 買取対象の品がある場合は、査定額を整理費用から差し引きます。
       </p>
@@ -1620,12 +1743,11 @@ table { border-collapse: collapse; width: 100%; }
             <label class="p-form__label" for="f-room">間取り<span class="p-form__req is-any">任意</span></label>
             <select id="f-room" name="room">
               <option value="">選択してください</option>
-              <option>1K</option>
-              <option>1DK</option>
-              <option>1LDK・2DK</option>
-              <option>2LDK・3DK</option>
-              <option>3LDK・4DK</option>
-              <option>4LDK・5DK以上</option>
+              <option>1R・1K</option>
+              <option>1DK・1LDK</option>
+              <option>2DK・2LDK</option>
+              <option>3DK・3LDK</option>
+              <option>4LDK以上・一戸建て</option>
               <option>分からない・その他</option>
             </select>
           </div>

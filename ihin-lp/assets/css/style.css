@@ -341,6 +341,54 @@ table { border-collapse: collapse; width: 100%; }
 .p-worry__catch strong { color: var(--c-earth-dark); }
 
 /* =========================================================
+   サービス内容（3本柱）
+   ========================================================= */
+.p-service__list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+}
+.p-service__item {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 38px 32px 34px;
+  box-shadow: var(--shadow-sm);
+}
+.p-service__icon {
+  width: 84px; height: 84px;
+  margin-bottom: 20px;
+  border-radius: 50%;
+  background: var(--c-earth-pale);
+  display: grid;
+  place-items: center;
+}
+.p-service__icon svg { width: 44px; height: 44px; }
+.p-service__title {
+  font-family: var(--font-serif);
+  font-size: clamp(20px, 2.6vw, 24px);
+  font-weight: 600;
+  color: var(--c-navy);
+  line-height: 1.55;
+  /* 見出しの行数が違ってもカード間で下線の位置が揃うように */
+  min-height: 3.1em;
+  padding-bottom: 16px;
+  margin-bottom: 18px;
+  border-bottom: 2px solid var(--c-earth-light);
+}
+.p-service__text { font-size: 16px; color: var(--c-text); }
+.p-service__alert {
+  background: var(--c-earth-pale);
+  border-left: 4px solid var(--c-earth);
+  border-radius: 0 10px 10px 0;
+  padding: 16px 18px;
+  margin-bottom: 16px;
+  font-size: 15.5px;
+  line-height: 1.9;
+  color: var(--c-earth-dark);
+}
+.p-service__alert b { color: var(--c-earth-dark); }
+
+/* =========================================================
    SECTION 03 選ばれる理由
    ========================================================= */
 .p-reason__list { display: grid; gap: 26px; }
@@ -404,7 +452,7 @@ table { border-collapse: collapse; width: 100%; }
    ========================================================= */
 .p-price__table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 .p-price__table {
-  min-width: 640px;
+  min-width: 720px;
   background: #fff;
   border-radius: var(--radius);
   overflow: hidden;
@@ -423,7 +471,8 @@ table { border-collapse: collapse; width: 100%; }
   font-weight: 700;
   border-bottom: none;
 }
-.p-price__table thead th:first-child { width: 30%; }
+.p-price__table thead th:first-child { width: 26%; }
+.p-price__table thead th:nth-child(2) { width: 32%; }
 .p-price__table tbody th {
   font-family: var(--font-serif);
   font-size: 20px;
@@ -455,6 +504,7 @@ table { border-collapse: collapse; width: 100%; }
   letter-spacing: .01em;
 }
 .p-price__yen small { font-size: 14px; font-weight: 500; color: var(--c-text-sub); }
+.p-price__time { font-size: 15.5px; color: var(--c-text-sub); font-weight: 500; }
 .p-price__table tbody tr:last-child th,
 .p-price__table tbody tr:last-child td { border-bottom: none; }
 
@@ -966,6 +1016,7 @@ table { border-collapse: collapse; width: 100%; }
    Responsive
    ========================================================= */
 @media (max-width: 980px) {
+  .p-service__list { grid-template-columns: 1fr; }
   .p-fv__inner { grid-template-columns: 1fr; gap: 32px; }
   .p-fv__visual { order: -1; }
   .p-case__body { grid-template-columns: 1fr; }
@@ -1000,6 +1051,10 @@ table { border-collapse: collapse; width: 100%; }
   .p-fv__cta { flex-direction: column; }
   .c-btn { width: 100%; padding: 17px 20px; }
   .p-worry__list { grid-template-columns: 1fr; }
+  .p-service__list { grid-template-columns: 1fr; }
+  .p-service__item { padding: 30px 24px 28px; }
+  .p-service__icon { margin: 0 auto 18px; }
+  .p-service__title { text-align: center; }
   .p-worry__item { padding: 20px 20px; font-size: 16.5px; }
   .p-reason__item {
     grid-template-columns: 1fr;
