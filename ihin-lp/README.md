@@ -34,7 +34,29 @@ CSS・JS・画像をすべて埋め込んだ1ファイル版です。ダウン�
 サーバーなしでそのまま開けます。
 ※ 内容を更新したら `python3 tools/build-preview.py` で作り直してください。
 
-### 2. ローカルでサーバーを立てる
+### 2. GitHub Pages でURLを発行してクライアントに見せる
+
+このリポジトリは public で、GitHub Pages は既に有効になっています。
+公開元のブランチを切り替えるだけでURLが発行されます。
+
+1. <https://github.com/rockdanceai2025-sys/city-contact-enkin/settings/pages> を開く
+2. **Build and deployment** の Source が **Deploy from a branch** になっていることを確認
+3. Branch を **`claude/estate-buyback-lp-7sxrnj`** ／ フォルダは **`/ (root)`** に変更して **Save**
+4. 1〜2分後、次のURLで閲覧できます
+
+```
+https://rockdanceai2025-sys.github.io/city-contact-enkin/ihin-lp/
+```
+
+**既存の遠近両用コンタクトのページは壊れません。**
+このブランチのルート直下のファイルは公開中のブランチと同一のため、
+`https://rockdanceai2025-sys.github.io/city-contact-enkin/` はこれまでどおり表示されます。
+
+**検索エンジンには表示されません**（`index.html` に `noindex, nofollow` を入れているため）。
+ただしURLを知っている人は誰でも閲覧できる状態になります（リポジトリが public のため）。
+社外に出したくない場合は、`preview.html` をメール等で直接お渡しする方法をおすすめします。
+
+### 3. ローカルでサーバーを立てる
 
 ```bash
 python3 -m http.server 8000
