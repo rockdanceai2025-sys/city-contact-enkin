@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>UIモック｜graphite ink on warm paper</title>
+<style>
+/* =========================================================
+   DESIGN_6.md（ChatGPT — Style Reference）のトークンをそのまま実装
+   - 無彩色のみ。意味は「文字の太さ・余白・位置」で伝える
+   - 影は使わない。面の分離は 1px のヘアラインだけ
+   - Webフォント読み込みなし（OS標準フォント）
+   ========================================================= */
+:root {
+  /* Colors */
+  --color-sidebar-mist: #f9f9f9;
+  --color-pure-white: #ffffff;
+  --color-graphite-ink: #0d0d0d;
+  --color-mid-ash: #5d5d5d;
+  --color-hollow: #8f8f8f;
+  --color-hairline: #0000001a;
+  --color-hover-veil: #0000000d;
+  --color-ink-press: #000000;
+  --color-deep-charcoal: #00000080;
+  --color-edge-gray: #e6e6e6;
+
+  /* Typography */
+  --font-apple-system-body: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, Roboto, sans-serif;
+  --text-caption: 14px; --leading-caption: 1.43;
+  --text-body: 16px;    --leading-body: 1.5;
+  --text-heading: 24px; --leading-heading: 1.33;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  /* Spacing */
+  --spacing-6: 6px; --spacing-8: 8px; --spacing-10: 10px;
+  --spacing-12: 12px; --spacing-16: 16px; --spacing-20: 20px;
+  --section-gap: 24px;
+  --card-padding: 16px;
+  --element-gap: 6px;
+
+  /* Radius */
+  --radius-nav: 10px; --radius-cards: 10px; --radius-links: 16px;
+  --radius-badges: 0px; --radius-buttons: 10px;
+
+  /* Layout */
+  --sidebar-w: 272px;
+  --thread-w: 768px;
+  --strip-h: 52px;
+}
+
+* , *::before, *::after { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: var(--font-apple-system-body);
+  font-size: var(--text-body); line-height: var(--leading-body);
+  color: var(--color-graphite-ink);
+  background: var(--color-pure-white);
+  -webkit-font-smoothing: antialiased;
+}
+button { font: inherit; color: inherit; cursor: pointer; background: none; border: 0; }
+ul { margin: 0; padding: 0; list-style: none; }
+p, h1, h2, h3 { margin: 0; }
+:focus-visible { outline: 2px solid var(--color-graphite-ink); outline-offset: 2px; }
+
+/* ---------- シェル：サイドバー ＋ 会話カラム ---------- */
+.shell { display: grid; grid-template-columns: var(--sidebar-w) 1fr; height: 100%; }
+
+/* ---------- サイドバー ---------- */
+.rail {
+  display: flex; flex-direction: column; min-width: 0;
+  background: var(--color-sidebar-mist);
+  border-right: 1px solid var(--color-hairline);
+  padding: 0 var(--spacing-10) var(--spacing-12);
+}
+.rail__strip {
+  height: var(--strip-h); flex: none;
+  display: flex; align-items: center; gap: var(--element-gap);
+}
+.rail__scroll { flex: 1; overflow-y: auto; overscroll-behavior: contain; margin: 0 calc(var(--spacing-10) * -1); padding: 0 var(--spacing-10); }
+.rail__group { padding: var(--spacing-12) var(--spacing-10) var(--element-gap); font-size: 12px; color: var(--color-hollow); }
+
+/* Sidebar Item（ゴーストボタン） */
+.navrow {
+  display: flex; align-items: center; gap: var(--spacing-10); width: 100%;
+  padding: var(--spacing-6) var(--spacing-10);
+  border-radius: var(--radius-nav);
+  font-size: var(--text-caption); line-height: var(--leading-caption);
+  text-align: left;
+  transition: background-color .12s ease;
+}
+.navrow:hover { background: var(--color-hover-veil); }
+.navrow svg { width: 16px; height: 16px; flex: none; }
+
+/* Conversation Card */
+.chatrow { display: block; width: 100%; padding: var(--spacing-6) var(--spacing-10); border-radius: var(--radius-nav); text-align: left; transition: background-color .12s ease; }
+.chatrow:hover { background: var(--color-hover-veil); }
+.chatrow.is-active { background: var(--color-hover-veil); }
+.chatrow__title { font-size: var(--text-caption); font-weight: var(--font-weight-medium); line-height: var(--leading-caption); }
+.chatrow__preview {
+  font-size: 13px; line-height: var(--leading-caption); color: var(--color-hollow);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+/* Sidebar Footer Block */
+.rail__foot {
+  flex: none; margin-top: var(--spacing-8); padding-top: var(--spacing-12);
+  border-top: 1px solid var(--color-hairline);
+  display: grid; row-gap: var(--spacing-10);
+}
+.helper { padding: 0 var(--spacing-10); font-size: var(--text-caption); line-height: var(--leading-caption); color: var(--color-hollow); }
+
+/* Pill Primary Button（Log In）— ページ内で唯一のピル、唯一の枠線持ち */
+.pill {
+  justify-self: start; margin-left: var(--spacing-10);
+  padding: var(--spacing-8) var(--spacing-16);
+  background: var(--color-pure-white); color: var(--color-graphite-ink);
+  border: 1px solid var(--color-hairline); border-radius: 9999px;
+  font-size: var(--text-caption); font-weight: var(--font-weight-medium); line-height: var(--leading-caption);
+  transition: border-color .12s ease;
+}
+.pill:hover { border-color: #00000026; }
+
+/* Compact Icon Button ＋ Tooltip */
+.iconbtn {
+  display: grid; place-items: center; flex: none;
+  padding: var(--spacing-6) var(--spacing-8); border-radius: var(--radius-nav);
+  transition: background-color .12s ease;
+}
+.iconbtn:hover { background: var(--color-hover-veil); }
+.iconbtn svg { width: 16px; height: 16px; display: block; }
+.tip { position: relative; }
+.tip::after {
+  content: attr(data-tip); position: absolute; top: calc(100% + 6px); left: 50%; translate: -50% 0;
+  padding: 4px var(--spacing-8); border-radius: 6px;
+  background: var(--color-ink-press); color: var(--color-pure-white);
+  font-size: 12px; line-height: 1.4; white-space: nowrap;
+  opacity: 0; pointer-events: none; transition: opacity .12s ease; z-index: 30;
+}
+.tip:hover::after { opacity: 1; }
+
+/* モデルセレクタ */
+.model { display: flex; align-items: center; gap: var(--element-gap); padding: var(--spacing-6) var(--spacing-10); border-radius: var(--radius-nav); font-size: var(--text-caption); font-weight: var(--font-weight-medium); transition: background-color .12s ease; }
+.model:hover { background: var(--color-hover-veil); }
+.model svg { width: 12px; height: 12px; opacity: .5; }
+
+/* ---------- 会話カラム ---------- */
+.main { display: flex; flex-direction: column; min-width: 0; background: var(--color-pure-white); }
+.main__strip {
+  height: var(--strip-h); flex: none;
+  display: flex; align-items: center; gap: var(--element-gap);
+  padding: 0 var(--spacing-12);
+}
+.main__title { font-size: var(--text-caption); color: var(--color-mid-ash); margin-left: auto; }
+.thread { flex: 1; overflow-y: auto; }
+.thread__inner { width: min(100% - 32px, var(--thread-w)); margin-inline: auto; padding: var(--spacing-20) 0 var(--section-gap); }
+
+/* ウェルカム画面 */
+.welcome { display: grid; place-content: center; min-height: 100%; text-align: center; padding: var(--section-gap) 0; }
+.welcome__title { font-size: var(--text-heading); line-height: var(--leading-heading); font-weight: var(--font-weight-semibold); }
+.welcome__lead { margin-top: var(--spacing-10); font-size: var(--text-body); line-height: var(--leading-body); color: var(--color-mid-ash); }
+.suggests { margin-top: var(--section-gap); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--element-gap); text-align: left; }
+/* Surface Card（浮きはヘアラインで表現。影は使わない） */
+.card {
+  padding: var(--card-padding); border: 1px solid var(--color-hairline); border-radius: var(--radius-cards);
+  background: var(--color-pure-white); transition: background-color .12s ease;
+}
+button.card { width: 100%; text-align: left; }
+button.card:hover { background: var(--color-hover-veil); }
+.card__title { font-size: var(--text-caption); font-weight: var(--font-weight-medium); line-height: var(--leading-caption); }
+.card__text { margin-top: 2px; font-size: var(--text-caption); line-height: var(--leading-caption); color: var(--color-hollow); }
+
+/* メッセージ */
+.msg { display: flex; gap: var(--spacing-12); padding: var(--spacing-16) 0; }
+.msg + .msg { border-top: 1px solid var(--color-hairline); }
+.avatar {
+  flex: none; width: 24px; height: 24px; border-radius: 50%;
+  display: grid; place-items: center; font-size: 12px; font-weight: var(--font-weight-semibold);
+}
+.avatar--user { background: var(--color-edge-gray); color: var(--color-mid-ash); }
+.avatar--bot { background: var(--color-graphite-ink); color: var(--color-pure-white); }
+.msg__body { min-width: 0; }
+.msg__name { font-size: var(--text-caption); font-weight: var(--font-weight-semibold); line-height: var(--leading-caption); margin-bottom: 2px; }
+.msg__text { font-size: var(--text-body); line-height: var(--leading-body); }
+.msg__text p + p { margin-top: var(--spacing-12); }
+.msg__actions { margin-top: var(--spacing-8); display: flex; gap: 2px; }
+
+/* Badge / Chip（角なし） */
+.badge {
+  display: inline-block; padding: 1px var(--spacing-6);
+  background: var(--color-sidebar-mist); color: var(--color-graphite-ink);
+  border-radius: var(--radius-badges); font-size: 12px; line-height: 1.5;
+}
+
+/* 入力中の点 */
+.dots { display: inline-flex; gap: 4px; align-items: center; height: 24px; }
+.dots span { width: 5px; height: 5px; border-radius: 50%; background: var(--color-hollow); animation: blink 1.2s infinite; }
+.dots span:nth-child(2) { animation-delay: .2s; }
+.dots span:nth-child(3) { animation-delay: .4s; }
+@keyframes blink { 0%, 60%, 100% { opacity: .25; } 30% { opacity: 1; } }
+
+/* コンポーザー */
+.composer { flex: none; padding: 0 var(--spacing-12) var(--spacing-20); }
+.composer__inner { width: min(100% - 8px, var(--thread-w)); margin-inline: auto; }
+.composer__field {
+  display: flex; align-items: flex-end; gap: var(--spacing-8);
+  padding: var(--spacing-10) var(--spacing-10) var(--spacing-10) var(--spacing-16);
+  border: 1px solid var(--color-hairline); border-radius: var(--radius-links);
+  background: var(--color-pure-white);
+  transition: border-color .12s ease;
+}
+.composer__field:focus-within { border-color: #00000026; }
+.composer__field textarea {
+  flex: 1; min-width: 0; border: 0; outline: 0; resize: none; background: none;
+  font: inherit; font-size: var(--text-body); line-height: var(--leading-body);
+  color: var(--color-graphite-ink); max-height: 160px;
+}
+.composer__field textarea::placeholder { color: var(--color-hollow); }
+.send {
+  flex: none; width: 32px; height: 32px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--color-ink-press); color: var(--color-pure-white);
+  transition: opacity .12s ease;
+}
+.send:disabled { opacity: .25; cursor: default; }
+.send svg { width: 16px; height: 16px; }
+.composer__note { margin-top: var(--spacing-8); text-align: center; font-size: 12px; line-height: 1.4; color: var(--color-hollow); }
+
+/* Scrim Overlay ＋ Elevated Panel */
+.scrim {
+  position: fixed; inset: 0; z-index: 40; background: var(--color-deep-charcoal);
+  display: grid; place-items: center; padding: var(--spacing-20);
+}
+.scrim[hidden] { display: none; }
+.panel {
+  width: min(100%, 360px); padding: var(--spacing-20);
+  background: var(--color-pure-white); border: 1px solid var(--color-hairline); border-radius: var(--radius-cards);
+}
+.panel__title { font-size: var(--text-heading); line-height: var(--leading-heading); font-weight: var(--font-weight-semibold); }
+.panel__text { margin-top: var(--spacing-10); font-size: var(--text-caption); line-height: var(--leading-caption); color: var(--color-mid-ash); }
+.panel__actions { margin-top: var(--spacing-16); display: flex; gap: var(--spacing-8); }
+.btn {
+  padding: var(--spacing-8) var(--spacing-16); border-radius: var(--radius-buttons);
+  font-size: var(--text-caption); font-weight: var(--font-weight-medium); line-height: var(--leading-caption);
+  border: 1px solid transparent; transition: background-color .12s ease, border-color .12s ease;
+}
+.btn--ink { background: var(--color-ink-press); color: var(--color-pure-white); }
+.btn--ink:hover { background: var(--color-mid-ash); }
+.btn--quiet { border-color: var(--color-hairline); }
+.btn--quiet:hover { background: var(--color-hover-veil); }
+
+/* ---------- レスポンシブ ---------- */
+.rail__close { display: none; }
+@media (max-width: 860px) {
+  .shell { grid-template-columns: 1fr; }
+  .rail {
+    position: fixed; inset: 0 auto 0 0; z-index: 50; width: var(--sidebar-w);
+    transform: translateX(-100%); transition: transform .2s ease;
+  }
+  .rail.is-open { transform: none; }
+  .rail__close { display: grid; }
+  .main__strip .iconbtn--menu { display: grid; }
+  .suggests { grid-template-columns: 1fr; }
+}
+@media (min-width: 861px) {
+  .iconbtn--menu { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- ===================== サイドバー ===================== -->
+  <aside class="rail" id="rail">
+    <div class="rail__strip">
+      <button class="model" type="button">グラファイト 1.0 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+      <button class="iconbtn tip rail__close" type="button" data-tip="閉じる" id="railClose" aria-label="サイドバーを閉じる" style="margin-left:auto">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+
+    <div class="rail__scroll">
+      <button class="navrow" type="button" id="newChat">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        新しいチャット
+      </button>
+      <button class="navrow" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg>
+        検索する
+      </button>
+      <button class="navrow" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="14" rx="2"/><circle cx="9" cy="10" r="1.5"/><path d="M5 17l4.5-4.5 3.5 3.5 2.5-2.5L20 17"/></svg>
+        画像をつくる
+      </button>
+
+      <p class="rail__group">今日</p>
+      <ul id="chatList"></ul>
+      <p class="rail__group">昨日</p>
+      <ul id="chatListOld"></ul>
+    </div>
+
+    <div class="rail__foot">
+      <p class="helper">履歴の保存やカスタム指示は、ログインするとご利用いただけます。</p>
+      <button class="pill" type="button" id="loginBtn">ログイン</button>
+    </div>
+  </aside>
+
+  <!-- ===================== 会話カラム ===================== -->
+  <div class="main">
+    <div class="main__strip">
+      <button class="iconbtn tip iconbtn--menu" type="button" data-tip="メニュー" id="railOpen" aria-label="サイドバーを開く">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <span class="main__title" id="mainTitle">新しいチャット</span>
+    </div>
+
+    <div class="thread" id="thread"></div>
+
+    <div class="composer">
+      <div class="composer__inner">
+        <form class="composer__field" id="composer">
+          <textarea id="input" rows="1" placeholder="メッセージを入力する" aria-label="メッセージを入力する"></textarea>
+          <button class="send" type="submit" id="send" disabled aria-label="送信">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+          </button>
+        </form>
+        <p class="composer__note">これは見た目確認用のモックです。返答はあらかじめ用意した文面が表示されます。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Scrim Overlay ＋ Elevated Panel -->
+<div class="scrim" id="scrim" hidden>
+  <div class="panel" role="dialog" aria-modal="true" aria-labelledby="panelTitle">
+    <h2 class="panel__title" id="panelTitle">ログイン</h2>
+    <p class="panel__text">モックのため、実際のログインは行いません。スクリム（50%の黒）と、ヘアラインで浮かせたパネルの見え方の確認用です。</p>
+    <div class="panel__actions">
+      <button class="btn btn--ink" type="button" data-close>続ける</button>
+      <button class="btn btn--quiet" type="button" data-close>閉じる</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ---------- モックのデータ ---------- */
+  var CHATS = [
+    {
+      id: 'c1', when: 'today', title: '遠近両用レンズの見え方',
+      preview: '1枚のレンズで遠くと近くを…',
+      messages: [
+        { role: 'user', text: ['遠近両用のコンタクトレンズって、実際どんな見え方になりますか。'] },
+        { role: 'bot', text: [
+          '1枚のレンズの中に、遠く用・中間用・近く用の度数が同心円状に配置されています。視線を動かすと、脳が必要な像を選び取る形でピントが切り替わります（同時視デザイン）。',
+          'かけ替えの動作がなくなるぶん、遠くと近くを行き来する場面が続いても負担が減ります。慣れるまでの期間には個人差があります。'
+        ] }
+      ]
+    },
+    {
+      id: 'c2', when: 'today', title: 'ヘアラインで階層をつくる',
+      preview: '影を使わずに面を分けるには…',
+      messages: [
+        { role: 'user', text: ['影を使わずに、カードの階層をどう表現すればいいですか。'] },
+        { role: 'bot', text: [
+          '1px・rgba(0,0,0,0.1) のヘアライン1本で足ります。影は「浮いている」という比喩ですが、罫は「ここで面が変わる」という事実だけを伝えます。装飾が減るぶん、本文が前に出ます。',
+          '二重罫は使わないでください。罫が2本あると、どちらが構造かが読めなくなります。'
+        ] }
+      ]
+    },
+    {
+      id: 'c3', when: 'yesterday', title: '色を使わないUIの設計',
+      preview: '状態は色ではなく太さと塗りで…',
+      messages: [
+        { role: 'user', text: ['色を使わずに、状態の違いをどう伝えますか。'] },
+        { role: 'bot', text: [
+          '3つの手段があります。文字の太さ（400／500／600）、塗り（5%の黒ベール、または反転して真っ黒）、そして位置です。',
+          '色を捨てると、色は「データ」のためだけに空けておけます。グラフや、製品そのものの色など、色でしか表せないものが出てきたときに、それが一目で効くようになります。'
+        ] }
+      ]
+    },
+    {
+      id: 'c4', when: 'yesterday', title: 'システムフォントを使う理由',
+      preview: '読み込みゼロで、OSの描画に…',
+      messages: [
+        { role: 'user', text: ['Webフォントを読み込まないのは、妥協ではないんでしょうか。'] },
+        { role: 'bot', text: [
+          '妥協ではなく選択です。フォントの読み込みが0msになり、文字が入れ替わるちらつき（FOUT）も起きません。OS標準の描画に乗るので、拡大表示や読み上げとの相性もよくなります。',
+          'ブランドの個性は書体ではなく、余白の取り方と罫の少なさで出す、という考え方です。'
+        ] }
+      ]
+    }
+  ];
+
+  var REPLY = [
+    'モックのため、返答は固定の文面です。実装時はここにモデルの応答が入ります。',
+    '本文は16px／行間1.5、補足は14px／行間1.43。見出しは24px／600 の1段階だけで、それより大きい文字はページ内のどこにも置きません。'
+  ];
+
+  /* ---------- 要素 ---------- */
+  var $ = function (id) { return document.getElementById(id); };
+  var thread = $('thread'), input = $('input'), send = $('send');
+  var mainTitle = $('mainTitle'), rail = $('rail'), scrim = $('scrim');
+  var current = null;
+
+  function el(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) { n.className = cls; }
+    if (text != null) { n.textContent = text; }
+    return n;
+  }
+
+  /* ---------- サイドバーの会話リスト ---------- */
+  function renderList() {
+    [['today', 'chatList'], ['yesterday', 'chatListOld']].forEach(function (pair) {
+      var box = $(pair[1]);
+      box.textContent = '';
+      CHATS.filter(function (c) { return c.when === pair[0]; }).forEach(function (c) {
+        var li = el('li');
+        var b = el('button', 'chatrow');
+        b.type = 'button';
+        b.dataset.id = c.id;
+        if (current === c.id) { b.classList.add('is-active'); b.setAttribute('aria-current', 'true'); }
+        b.appendChild(el('span', 'chatrow__title', c.title));
+        b.appendChild(el('span', 'chatrow__preview', c.preview));
+        b.querySelector('.chatrow__title').style.display = 'block';
+        b.querySelector('.chatrow__preview').style.display = 'block';
+        b.addEventListener('click', function () { openChat(c.id); });
+        li.appendChild(b);
+        box.appendChild(li);
+      });
+    });
+  }
+
+  /* ---------- 会話の描画 ---------- */
+  function messageNode(role, paragraphs) {
+    var wrap = el('div', 'msg');
+    var av = el('div', 'avatar ' + (role === 'user' ? 'avatar--user' : 'avatar--bot'), role === 'user' ? 'あ' : 'G');
+    var body = el('div', 'msg__body');
+    body.appendChild(el('p', 'msg__name', role === 'user' ? 'あなた' : 'グラファイト'));
+    var text = el('div', 'msg__text');
+    paragraphs.forEach(function (p) { text.appendChild(el('p', null, p)); });
+    body.appendChild(text);
+    wrap.appendChild(av);
+    wrap.appendChild(body);
+    return wrap;
+  }
+
+  function renderThread(chat) {
+    thread.textContent = '';
+    var inner = el('div', 'thread__inner');
+    chat.messages.forEach(function (m) { inner.appendChild(messageNode(m.role, m.text)); });
+    thread.appendChild(inner);
+    thread.scrollTop = thread.scrollHeight;
+  }
+
+  function renderWelcome() {
+    thread.textContent = '';
+    var inner = el('div', 'thread__inner welcome');
+    inner.appendChild(el('h1', 'welcome__title', 'なにから始めますか'));
+    inner.appendChild(el('p', 'welcome__lead', '下の欄に入力するか、下のいずれかを選んでください。'));
+    var grid = el('div', 'suggests');
+    [
+      ['ヘアラインで階層をつくる', '影を使わずに面を分ける方法'],
+      ['色を使わないUIの設計', '状態を太さと塗りで伝える'],
+      ['システムフォントを使う理由', '読み込みゼロと可読性の話'],
+      ['24pxで見出しを収める', '控えめな表示段階の作り方']
+    ].forEach(function (s) {
+      var b = el('button', 'card');
+      b.type = 'button';
+      b.appendChild(el('span', 'card__title', s[0]));
+      b.appendChild(el('span', 'card__text', s[1]));
+      b.querySelector('.card__title').style.display = 'block';
+      b.querySelector('.card__text').style.display = 'block';
+      b.addEventListener('click', function () {
+        input.value = s[0] + 'について教えてください。';
+        input.focus();
+        sync();
+      });
+      grid.appendChild(b);
+    });
+    inner.appendChild(grid);
+    thread.appendChild(inner);
+  }
+
+  function openChat(id) {
+    var chat = CHATS.filter(function (c) { return c.id === id; })[0];
+    if (!chat) { return; }
+    current = id;
+    mainTitle.textContent = chat.title;
+    renderThread(chat);
+    renderList();
+    rail.classList.remove('is-open');
+  }
+
+  function newChat() {
+    current = null;
+    mainTitle.textContent = '新しいチャット';
+    renderWelcome();
+    renderList();
+    rail.classList.remove('is-open');
+    input.focus();
+  }
+
+  /* ---------- 送信 ---------- */
+  function sync() {
+    send.disabled = input.value.trim() === '';
+    input.style.height = 'auto';
+    input.style.height = Math.min(input.scrollHeight, 160) + 'px';
+  }
+
+  function submit(e) {
+    if (e) { e.preventDefault(); }
+    var value = input.value.trim();
+    if (!value) { return; }
+
+    if (!current) {
+      var chat = {
+        id: 'c' + (CHATS.length + 1), when: 'today',
+        title: value.length > 16 ? value.slice(0, 16) + '…' : value,
+        preview: value, messages: []
+      };
+      CHATS.unshift(chat);
+      current = chat.id;
+      mainTitle.textContent = chat.title;
+      thread.textContent = '';
+      thread.appendChild(el('div', 'thread__inner'));
+      renderList();
+    }
+
+    var chatNow = CHATS.filter(function (c) { return c.id === current; })[0];
+    var inner = thread.querySelector('.thread__inner');
+    if (!inner || inner.classList.contains('welcome')) {
+      thread.textContent = '';
+      inner = el('div', 'thread__inner');
+      thread.appendChild(inner);
+    }
+
+    chatNow.messages.push({ role: 'user', text: [value] });
+    inner.appendChild(messageNode('user', [value]));
+    input.value = '';
+    sync();
+    thread.scrollTop = thread.scrollHeight;
+
+    // 返答（モックなので固定文面）
+    var pending = el('div', 'msg');
+    pending.appendChild(el('div', 'avatar avatar--bot', 'G'));
+    var body = el('div', 'msg__body');
+    body.appendChild(el('p', 'msg__name', 'グラファイト'));
+    var dots = el('div', 'dots');
+    dots.appendChild(el('span')); dots.appendChild(el('span')); dots.appendChild(el('span'));
+    body.appendChild(dots);
+    pending.appendChild(body);
+    inner.appendChild(pending);
+    thread.scrollTop = thread.scrollHeight;
+
+    setTimeout(function () {
+      inner.removeChild(pending);
+      chatNow.messages.push({ role: 'bot', text: REPLY });
+      inner.appendChild(messageNode('bot', REPLY));
+      thread.scrollTop = thread.scrollHeight;
+    }, 900);
+  }
+
+  /* ---------- イベント ---------- */
+  $('composer').addEventListener('submit', submit);
+  input.addEventListener('input', sync);
+  input.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) { submit(e); }
+  });
+  $('newChat').addEventListener('click', newChat);
+  $('railOpen').addEventListener('click', function () { rail.classList.add('is-open'); });
+  $('railClose').addEventListener('click', function () { rail.classList.remove('is-open'); });
+
+  $('loginBtn').addEventListener('click', function () { scrim.hidden = false; });
+  scrim.addEventListener('click', function (e) {
+    if (e.target === scrim || e.target.hasAttribute('data-close')) { scrim.hidden = true; }
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !scrim.hidden) { scrim.hidden = true; }
+  });
+
+  newChat();
+})();
+</script>
+</body>
+</html>
