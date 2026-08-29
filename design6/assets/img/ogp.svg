@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="大人の瞳を快適に。全店眼科併設で安心の遠近両用レンズ｜シティコンタクト">
+  <defs>
+    <linearGradient id="oBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F6F6F6"/><stop offset="60%" stop-color="#ECECEC"/><stop offset="100%" stop-color="#F4F4F4"/>
+    </linearGradient>
+    <linearGradient id="oPink" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8E8E8E"/><stop offset="100%" stop-color="#AEAEAE"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#oBg)"/>
+  <circle cx="1010" cy="315" r="250" fill="#FFFFFF" opacity=".55"/>
+  <g transform="translate(1010 315)">
+    <circle r="180" fill="none" stroke="url(#oPink)" stroke-width="26" opacity=".9"/>
+    <circle r="128" fill="none" stroke="#AEAEAE" stroke-width="3" opacity=".7"/>
+    <circle r="66" fill="none" stroke="#D4D4D4" stroke-width="3"/>
+    <path d="M-128-104a180 180 0 0 1 96-66" fill="none" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round"/>
+  </g>
+  <g font-family="'Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif">
+    <text x="90" y="200" font-size="26" font-weight="700" fill="#8E8E8E" letter-spacing="5">CITY CONTACT ／ 遠近両用レンズ</text>
+    <text x="90" y="300" font-size="54" font-weight="700" fill="#4F4F4F">大人の瞳を快適に。</text>
+    <text x="90" y="374" font-size="54" font-weight="700" fill="#727272">全店眼科併設で安心。</text>
+    <rect x="90" y="416" width="110" height="6" rx="3" fill="#8E8E8E"/>
+    <text x="90" y="480" font-size="26" fill="#636363">遠近両用レンズ ／ 熟年世代向け遠近両用カラコン</text>
+    <text x="90" y="548" font-size="26" font-weight="700" fill="#4F4F4F">シティコンタクト</text>
+  </g>
+</svg>
