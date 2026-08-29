@@ -3,76 +3,76 @@
   <desc id="clDesc">併設の眼科で医師の診察と処方を受け、その処方をもとにシティコンタクト店舗でレンズを選べる流れの図</desc>
   <defs>
     <linearGradient id="clHos" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#F292AF"/><stop offset="100%" stop-color="#F5A9C0"/>
+      <stop offset="0%" stop-color="#A9A9A9"/><stop offset="100%" stop-color="#BBBBBB"/>
     </linearGradient>
     <linearGradient id="clShop" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#C2456C"/><stop offset="100%" stop-color="#E4638A"/>
+      <stop offset="0%" stop-color="#626262"/><stop offset="100%" stop-color="#818181"/>
     </linearGradient>
     <filter id="clShadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#B85B7B" flood-opacity=".16"/>
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#717171" flood-opacity=".16"/>
     </filter>
   </defs>
 
-  <rect width="960" height="440" fill="#FFF7FA"/>
+  <rect width="960" height="440" fill="#F9F9F9"/>
 
-  <g font-family="'Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif">
+  <g font-family="system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI','Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic','Meiryo',sans-serif">
     <!-- 眼科 -->
-    <g filter="url(#clShadow)">
+    <g>
       <rect x="60" y="120" width="330" height="230" rx="20" fill="#FFFFFF"/>
       <path d="M60 140a20 20 0 0 1 20-20h290a20 20 0 0 1 20 20v46H60z" fill="url(#clHos)"/>
     </g>
     <text x="225" y="163" text-anchor="middle" font-size="22" font-weight="700" fill="#FFFFFF">併設の眼科</text>
     <!-- 医師 -->
     <g transform="translate(150 252)">
-      <path d="M-30 46c0-24 13-40 30-40s30 16 30 40z" fill="#FFFFFF" stroke="#F0D3DC" stroke-width="3"/>
-      <circle cy="-16" r="26" fill="#F7DDCB"/>
-      <path d="M-27-22a27 22 0 0 1 54 0l-6 4a22 16 0 0 0-42 0z" fill="#5E4235"/>
-      <circle cx="-8" cy="-16" r="3" fill="#4A3021"/><circle cx="8" cy="-16" r="3" fill="#4A3021"/>
-      <path d="M-7 -4a7 7 0 0 0 14 0" fill="none" stroke="#D4718C" stroke-width="2.5" stroke-linecap="round"/>
-      <path d="M-8 14v22M8 14v22" stroke="#F292AF" stroke-width="3" stroke-linecap="round"/>
+      <path d="M-30 46c0-24 13-40 30-40s30 16 30 40z" fill="#FFFFFF" stroke="#DADADA" stroke-width="3"/>
+      <circle cy="-16" r="26" fill="#E1E1E1"/>
+      <path d="M-27-22a27 22 0 0 1 54 0l-6 4a22 16 0 0 0-42 0z" fill="#474747"/>
+      <circle cx="-8" cy="-16" r="3" fill="#343434"/><circle cx="8" cy="-16" r="3" fill="#343434"/>
+      <path d="M-7 -4a7 7 0 0 0 14 0" fill="none" stroke="#888888" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M-8 14v22M8 14v22" stroke="#A9A9A9" stroke-width="3" stroke-linecap="round"/>
     </g>
-    <g font-size="15" fill="#6E5F66">
+    <g font-size="15" fill="#636363">
       <text x="205" y="238">医師が目の状態を診察</text>
       <text x="205" y="264">涙の量・角膜の状態を確認</text>
       <text x="205" y="290">度数・ADD（加入度数）を処方</text>
     </g>
-    <g fill="#F292AF">
+    <g fill="#A9A9A9">
       <circle cx="193" cy="233" r="4"/><circle cx="193" cy="259" r="4"/><circle cx="193" cy="285" r="4"/>
     </g>
 
     <!-- 矢印 -->
     <g transform="translate(430 235)">
-      <path d="M0 0h70" stroke="#E4638A" stroke-width="6" stroke-linecap="round"/>
-      <path d="M62 -12l20 12-20 12z" fill="#E4638A"/>
-      <text x="42" y="-26" text-anchor="middle" font-size="14" font-weight="700" fill="#C2456C">処方せん</text>
-      <text x="42" y="44" text-anchor="middle" font-size="13" fill="#8A7C82">その場でご来店</text>
+      <path d="M0 0h70" stroke="#818181" stroke-width="6" stroke-linecap="round"/>
+      <path d="M62 -12l20 12-20 12z" fill="#818181"/>
+      <text x="42" y="-26" text-anchor="middle" font-size="14" font-weight="700" fill="#626262">処方せん</text>
+      <text x="42" y="44" text-anchor="middle" font-size="13" fill="#7F7F7F">その場でご来店</text>
     </g>
 
     <!-- 店舗 -->
-    <g filter="url(#clShadow)">
+    <g>
       <rect x="570" y="120" width="330" height="230" rx="20" fill="#FFFFFF"/>
       <path d="M570 140a20 20 0 0 1 20-20h290a20 20 0 0 1 20 20v46H570z" fill="url(#clShop)"/>
     </g>
     <text x="735" y="163" text-anchor="middle" font-size="22" font-weight="700" fill="#FFFFFF">シティコンタクト</text>
     <!-- スタッフ -->
     <g transform="translate(660 252)">
-      <path d="M-30 46c0-24 13-40 30-40s30 16 30 40z" fill="#FDEFF3" stroke="#F5C9D7" stroke-width="3"/>
-      <circle cy="-16" r="26" fill="#F7DDCB"/>
-      <path d="M-28-20a28 24 0 0 1 56 0c0 14-6 4-10 2-10 6-30 6-40-2-4 4-6 12-6-0z" fill="#4A3428"/>
-      <circle cx="-8" cy="-16" r="3" fill="#4A3021"/><circle cx="8" cy="-16" r="3" fill="#4A3021"/>
-      <path d="M-7 -4a7 7 0 0 0 14 0" fill="none" stroke="#D4718C" stroke-width="2.5" stroke-linecap="round"/>
-      <circle cx="0" cy="24" r="9" fill="none" stroke="#E4638A" stroke-width="3"/>
+      <path d="M-30 46c0-24 13-40 30-40s30 16 30 40z" fill="#F2F2F2" stroke="#D3D3D3" stroke-width="3"/>
+      <circle cy="-16" r="26" fill="#E1E1E1"/>
+      <path d="M-28-20a28 24 0 0 1 56 0c0 14-6 4-10 2-10 6-30 6-40-2-4 4-6 12-6-0z" fill="#383838"/>
+      <circle cx="-8" cy="-16" r="3" fill="#343434"/><circle cx="8" cy="-16" r="3" fill="#343434"/>
+      <path d="M-7 -4a7 7 0 0 0 14 0" fill="none" stroke="#888888" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="0" cy="24" r="9" fill="none" stroke="#818181" stroke-width="3"/>
     </g>
-    <g font-size="15" fill="#6E5F66">
+    <g font-size="15" fill="#636363">
       <text x="715" y="238">処方にもとづきレンズを選定</text>
       <text x="715" y="264">お試しフィッティング</text>
       <text x="715" y="290">定額制プランで定期検査へ</text>
     </g>
-    <g fill="#E4638A">
+    <g fill="#818181">
       <circle cx="703" cy="233" r="4"/><circle cx="703" cy="259" r="4"/><circle cx="703" cy="285" r="4"/>
     </g>
 
-    <text x="480" y="66" text-anchor="middle" font-size="26" font-weight="700" fill="#C2456C">診察から処方、レンズ選びまで、ひとつづきに。</text>
-    <text x="480" y="400" text-anchor="middle" font-size="14" fill="#A2949A">※ 眼科の診療日・診療時間は店舗により異なります。詳しくは各店舗ページをご確認ください。</text>
+    <text x="480" y="66" text-anchor="middle" font-size="26" font-weight="700" fill="#626262">診察から処方、レンズ選びまで、ひとつづきに。</text>
+    <text x="480" y="400" text-anchor="middle" font-size="14" fill="#979797">※ 眼科の診療日・診療時間は店舗により異なります。詳しくは各店舗ページをご確認ください。</text>
   </g>
 </svg>

@@ -4,21 +4,21 @@
 
   <defs>
     <linearGradient id="kvBg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#FDEAF0"/>
-      <stop offset="55%" stop-color="#FBDCE6"/>
-      <stop offset="100%" stop-color="#F7EDDF"/>
+      <stop offset="0%" stop-color="#EEEEEE"/>
+      <stop offset="55%" stop-color="#E3E3E3"/>
+      <stop offset="100%" stop-color="#EEEEEE"/>
     </linearGradient>
     <linearGradient id="kvHair" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#5E4235"/>
-      <stop offset="100%" stop-color="#433026"/>
+      <stop offset="0%" stop-color="#474747"/>
+      <stop offset="100%" stop-color="#333333"/>
     </linearGradient>
     <linearGradient id="kvTops" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#F5FAFC"/>
-      <stop offset="100%" stop-color="#E4EEF3"/>
+      <stop offset="0%" stop-color="#F9F9F9"/>
+      <stop offset="100%" stop-color="#ECECEC"/>
     </linearGradient>
     <linearGradient id="kvScarf" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#F292AF"/>
-      <stop offset="100%" stop-color="#E4638A"/>
+      <stop offset="0%" stop-color="#A9A9A9"/>
+      <stop offset="100%" stop-color="#818181"/>
     </linearGradient>
 
     <filter id="kvBlur" x="-15%" y="-15%" width="130%" height="130%">
@@ -28,7 +28,7 @@
       <feGaussianBlur stdDeviation="26"/>
     </filter>
     <filter id="kvShadow" x="-30%" y="-30%" width="160%" height="160%">
-      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#B85B7B" flood-opacity=".18"/>
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#717171" flood-opacity=".18"/>
     </filter>
 
     <clipPath id="kvLeft"><rect x="0" y="0" width="600" height="800"/></clipPath>
@@ -40,55 +40,55 @@
       <path d="M398 800c4-116 82-190 202-206 120 16 198 90 202 206z" fill="url(#kvTops)"/>
       <path d="M600 594c-30 22-56 46-70 78 26 16 46 28 70 28s44-12 70-28c-14-32-40-56-70-78z" fill="url(#kvScarf)"/>
       <!-- 首 -->
-      <path d="M556 486h88v78c0 22-18 34-44 34s-44-12-44-34z" fill="#EFC9B2"/>
+      <path d="M556 486h88v78c0 22-18 34-44 34s-44-12-44-34z" fill="#CFCFCF"/>
       <!-- 耳 -->
-      <ellipse cx="480" cy="374" rx="20" ry="26" fill="#F7DDCB"/>
-      <ellipse cx="720" cy="374" rx="20" ry="26" fill="#F7DDCB"/>
-      <circle cx="480" cy="404" r="7" fill="#F2A8BF"/>
-      <circle cx="720" cy="404" r="7" fill="#F2A8BF"/>
+      <ellipse cx="480" cy="374" rx="20" ry="26" fill="#E1E1E1"/>
+      <ellipse cx="720" cy="374" rx="20" ry="26" fill="#E1E1E1"/>
+      <circle cx="480" cy="404" r="7" fill="#B9B9B9"/>
+      <circle cx="720" cy="404" r="7" fill="#B9B9B9"/>
       <!-- 後ろ髪 -->
       <path d="M600 176c-92 0-136 62-136 150v150c0 30-10 52-26 70h324c-16-18-26-40-26-70V326c0-88-44-150-136-150z" fill="url(#kvHair)"/>
       <!-- 顔 -->
-      <ellipse cx="600" cy="366" rx="118" ry="140" fill="#F7DDCB"/>
+      <ellipse cx="600" cy="366" rx="118" ry="140" fill="#E1E1E1"/>
       <!-- 前髪 -->
       <path d="M600 196c-76 0-122 50-124 124 0 14 2 26 6 36 8-46 30-74 66-86 26 32 78 46 130 40 20-2 34 12 40 46 4-12 6-24 6-36-2-74-48-124-124-124z" fill="url(#kvHair)"/>
       <!-- 眉 -->
-      <path d="M528 330c14-10 34-11 48-4" fill="none" stroke="#5E4235" stroke-width="8" stroke-linecap="round"/>
-      <path d="M624 326c14-7 34-6 48 4" fill="none" stroke="#5E4235" stroke-width="8" stroke-linecap="round"/>
+      <path d="M528 330c14-10 34-11 48-4" fill="none" stroke="#474747" stroke-width="8" stroke-linecap="round"/>
+      <path d="M624 326c14-7 34-6 48 4" fill="none" stroke="#474747" stroke-width="8" stroke-linecap="round"/>
       <!-- 目 -->
       <g>
         <path d="M528 372c8-14 20-21 32-21s24 7 32 21c-8 12-20 18-32 18s-24-6-32-18z" fill="#FFFFFF"/>
-        <circle cx="560" cy="369" r="13" fill="#4A3021"/>
-        <circle cx="560" cy="369" r="5" fill="#20130B"/>
+        <circle cx="560" cy="369" r="13" fill="#343434"/>
+        <circle cx="560" cy="369" r="5" fill="#151515"/>
         <circle cx="555" cy="364" r="4" fill="#FFFFFF"/>
-        <path d="M528 372c8-14 20-21 32-21s24 7 32 21" fill="none" stroke="#3A2820" stroke-width="6" stroke-linecap="round"/>
+        <path d="M528 372c8-14 20-21 32-21s24 7 32 21" fill="none" stroke="#2B2B2B" stroke-width="6" stroke-linecap="round"/>
         <path d="M608 372c8-14 20-21 32-21s24 7 32 21c-8 12-20 18-32 18s-24-6-32-18z" fill="#FFFFFF"/>
-        <circle cx="640" cy="369" r="13" fill="#4A3021"/>
-        <circle cx="640" cy="369" r="5" fill="#20130B"/>
+        <circle cx="640" cy="369" r="13" fill="#343434"/>
+        <circle cx="640" cy="369" r="5" fill="#151515"/>
         <circle cx="635" cy="364" r="4" fill="#FFFFFF"/>
-        <path d="M608 372c8-14 20-21 32-21s24 7 32 21" fill="none" stroke="#3A2820" stroke-width="6" stroke-linecap="round"/>
+        <path d="M608 372c8-14 20-21 32-21s24 7 32 21" fill="none" stroke="#2B2B2B" stroke-width="6" stroke-linecap="round"/>
       </g>
       <!-- 鼻・口 -->
-      <path d="M598 398c-4 8-10 13-4 17 4 3 8 3 12 0" fill="none" stroke="#E0AE94" stroke-width="5" stroke-linecap="round"/>
-      <path d="M578 442c8 9 16 13 22 13s14-4 22-13" fill="none" stroke="#D4718C" stroke-width="7" stroke-linecap="round"/>
+      <path d="M598 398c-4 8-10 13-4 17 4 3 8 3 12 0" fill="none" stroke="#B7B7B7" stroke-width="5" stroke-linecap="round"/>
+      <path d="M578 442c8 9 16 13 22 13s14-4 22-13" fill="none" stroke="#888888" stroke-width="7" stroke-linecap="round"/>
       <!-- チーク -->
-      <ellipse cx="524" cy="410" rx="24" ry="13" fill="#F2A8BF" opacity=".45"/>
-      <ellipse cx="676" cy="410" rx="24" ry="13" fill="#F2A8BF" opacity=".45"/>
+      <ellipse cx="524" cy="410" rx="24" ry="13" fill="#B9B9B9" opacity=".45"/>
+      <ellipse cx="676" cy="410" rx="24" ry="13" fill="#B9B9B9" opacity=".45"/>
     </g>
   </defs>
 
   <rect width="1200" height="800" fill="url(#kvBg)"/>
   <g filter="url(#kvSoft)" opacity=".7">
     <circle cx="180" cy="180" r="110" fill="#FFFFFF"/>
-    <circle cx="1030" cy="150" r="90" fill="#FCE0E8"/>
-    <circle cx="1070" cy="640" r="120" fill="#F7EFE2"/>
-    <circle cx="140" cy="660" r="100" fill="#FDE7EE"/>
+    <circle cx="1030" cy="150" r="90" fill="#E7E7E7"/>
+    <circle cx="1070" cy="640" r="120" fill="#F0F0F0"/>
+    <circle cx="140" cy="660" r="100" fill="#ECECEC"/>
   </g>
 
   <!-- 左：遠近両用レンズ装用（くっきり） -->
   <g clip-path="url(#kvLeft)">
     <g transform="translate(600 420) scale(1.3) translate(-600 -420)">
-      <use href="#kvWoman" filter="url(#kvShadow)"/>
+      <use href="#kvWoman"/>
     </g>
     <rect width="1200" height="800" fill="#FFFFFF" opacity=".05"/>
   </g>
@@ -98,24 +98,24 @@
     <g transform="translate(600 420) scale(1.3) translate(-600 -420)">
       <use href="#kvWoman" filter="url(#kvBlur)"/>
     </g>
-    <rect width="1200" height="800" fill="#7A6A72" opacity=".10"/>
+    <rect width="1200" height="800" fill="#6E6E6E" opacity=".10"/>
   </g>
 
   <!-- 中央の境界 -->
   <line x1="600" y1="96" x2="600" y2="800" stroke="#FFFFFF" stroke-width="4" opacity=".85"/>
-  <line x1="600" y1="96" x2="600" y2="800" stroke="#E4638A" stroke-width="2" stroke-dasharray="10 10" opacity=".7"/>
+  <line x1="600" y1="96" x2="600" y2="800" stroke="#818181" stroke-width="2" stroke-dasharray="10 10" opacity=".7"/>
 
   <!-- ラベル -->
-  <g font-family="'Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif" text-anchor="middle">
+  <g font-family="system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI','Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic','Meiryo',sans-serif" text-anchor="middle">
     <g>
-      <rect x="330" y="702" width="250" height="58" rx="29" fill="#E4638A"/>
+      <rect x="330" y="702" width="250" height="58" rx="29" fill="#818181"/>
       <text x="455" y="737" font-size="24" font-weight="700" fill="#FFFFFF">遠近両用レンズ</text>
     </g>
     <g>
-      <rect x="620" y="700" width="250" height="58" rx="29" fill="#FFFFFF" stroke="#C9B9BF" stroke-width="2"/>
-      <text x="745" y="737" font-size="24" font-weight="700" fill="#8A7A80">裸眼</text>
+      <rect x="620" y="700" width="250" height="58" rx="29" fill="#FFFFFF" stroke="#BDBDBD" stroke-width="2"/>
+      <text x="745" y="737" font-size="24" font-weight="700" fill="#7E7E7E">裸眼</text>
     </g>
-    <text x="455" y="106" font-size="21" font-weight="700" fill="#D14B78">くっきり見える</text>
-    <text x="745" y="106" font-size="21" font-weight="700" fill="#9C8B92">ぼんやりする</text>
+    <text x="455" y="106" font-size="21" font-weight="700" fill="#6B6B6B">くっきり見える</text>
+    <text x="745" y="106" font-size="21" font-weight="700" fill="#8F8F8F">ぼんやりする</text>
   </g>
 </svg>
