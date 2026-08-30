@@ -613,6 +613,20 @@ table { border-collapse: collapse; width: 100%; }
   font-size: clamp(18px, 2.6vw, 24px); color: var(--c-primary-dark);
   background: linear-gradient(transparent 62%, rgba(242, 146, 175, .38) 62%);
 }
+/* まとめの結論コピー */
+.p-answer {
+  margin-top: 22px; display: inline-flex; align-items: baseline; flex-wrap: wrap;
+  justify-content: center; gap: .2em;
+  font-size: clamp(17px, 2.4vw, 24px); font-weight: 700; color: var(--c-text);
+  line-height: 1.5;
+}
+.p-answer::before { content: "→"; color: var(--c-primary); margin-right: .2em; }
+.p-answer em {
+  font-style: normal; color: #fff; background: var(--c-primary);
+  border-radius: 12px; padding: .1em .5em;
+  font-size: 1.12em; box-shadow: 0 5px 14px rgba(228, 99, 138, .26);
+}
+
 /* 定額制プランのカード */
 .p-plan { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 24px; }
 .p-plan__item {
