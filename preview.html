@@ -619,6 +619,26 @@ table { border-collapse: collapse; width: 100%; }
 .p-reason { background: #fff; border-radius: var(--radius-lg); padding: clamp(24px, 4vw, 44px); box-shadow: var(--shadow-sm); }
 .p-reason__lead { text-align: center; font-size: clamp(16px, 2.2vw, 20px); font-weight: 700; line-height: 1.8; }
 .p-reason__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 20px; }
+
+/* 都度購入との対比（1行） */
+.p-reason__contrast {
+  background: #f4f1f2; border-radius: var(--radius); padding: 22px 26px;
+  text-align: center; font-size: 15px; line-height: 1.9; color: #7a6c72;
+}
+.p-reason__contrast strong { color: #6b5b62; }
+
+/* 定額制の3つのメリット */
+.p-merit { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 20px; }
+.p-merit__item {
+  background: var(--c-primary-light); border: 2px solid var(--c-primary);
+  border-radius: var(--radius-lg); padding: 28px 24px; position: relative;
+}
+.p-merit__no {
+  display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 50%;
+  background: var(--c-primary); color: #fff; font-size: 15px; font-weight: 700; margin-bottom: 14px;
+}
+.p-merit__title { font-size: 19px; font-weight: 700; line-height: 1.55; color: var(--c-primary-dark); margin-bottom: 12px; }
+.p-merit__text { font-size: 14px; line-height: 1.9; color: var(--c-text); }
 .p-reason__item { border-radius: var(--radius-lg); padding: 26px 24px; }
 .p-reason__item--ng { background: #f4f1f2; }
 .p-reason__item--ok { background: var(--c-primary-light); border: 2px solid var(--c-primary); }
@@ -995,25 +1015,30 @@ table { border-collapse: collapse; width: 100%; }
           <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5MDAgNDIwIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjQyMCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsbGVkYnk9ImZyVGl0bGUgZnJEZXNjIj4KICA8dGl0bGUgaWQ9ImZyVGl0bGUiPuODlOODs+ODiOOBjOWQiOOBhuevhOWbsuOBruWkieWMljwvdGl0bGU+CiAgPGRlc2MgaWQ9ImZyRGVzYyI+5Lul5YmN44Gv5omL5YWD44GL44KJ6YGg44GP44G+44Gn44OU44Oz44OI44GM5ZCI44Gj44Gm44GE44Gf44Gu44Gr5a++44GX44CBNDDku6Pku6XpmY3jga/miYvlhYPlgbTjga7jg5Tjg7Pjg4jjgYzlkIjjgYTjgavjgY/jgY/jgarjgovjgZPjgajjgpLot53pm6Ljga7luK/jgafnpLrjgZfjgZ/lm7M8L2Rlc2M+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImZyT2siIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIwIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI0YyOTJBRiIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI0U0NjM4QSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZnJOZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjAiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjREVENUQ4Ii8+PHN0b3Agb2Zmc2V0PSI1NSUiIHN0b3AtY29sb3I9IiNFOUUwRTMiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNFNDYzOEEiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgoKICA8cmVjdCB3aWR0aD0iOTAwIiBoZWlnaHQ9IjQyMCIgZmlsbD0iI0ZGRkZGRiIvPgoKICA8ZyBmb250LWZhbWlseT0iJ05vdG8gU2FucyBKUCcsJ0hpcmFnaW5vIFNhbnMnLCdZdSBHb3RoaWMnLHNhbnMtc2VyaWYiPgogICAgPCEtLSDot53pm6Ljga7nm67nm5vjgoogLS0+CiAgICA8ZyBmb250LXNpemU9IjE0IiBmaWxsPSIjOEE3QzgyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4KICAgICAgPHRleHQgeD0iMTUwIiB5PSI2MCI+MzBjbe+8iOaJi+WFg++8iTwvdGV4dD4KICAgICAgPHRleHQgeD0iMzYwIiB5PSI2MCI+MW08L3RleHQ+CiAgICAgIDx0ZXh0IHg9IjU3MCIgeT0iNjAiPjNtPC90ZXh0PgogICAgICA8dGV4dCB4PSI3OTAiIHk9IjYwIj7pgaDjgY88L3RleHQ+CiAgICA8L2c+CiAgICA8ZyBzdHJva2U9IiNGMEUzRTgiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWRhc2hhcnJheT0iNCA2Ij4KICAgICAgPGxpbmUgeDE9IjE1MCIgeTE9IjcyIiB4Mj0iMTUwIiB5Mj0iMzMwIi8+CiAgICAgIDxsaW5lIHgxPSIzNjAiIHkxPSI3MiIgeDI9IjM2MCIgeTI9IjMzMCIvPgogICAgICA8bGluZSB4MT0iNTcwIiB5MT0iNzIiIHgyPSI1NzAiIHkyPSIzMzAiLz4KICAgICAgPGxpbmUgeDE9Ijc5MCIgeTE9IjcyIiB4Mj0iNzkwIiB5Mj0iMzMwIi8+CiAgICA8L2c+CgogICAgPCEtLSDku6XliY0gLS0+CiAgICA8dGV4dCB4PSI3MCIgeT0iMTI4IiBmb250LXNpemU9IjE3IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjNUM0QTUyIiB0ZXh0LWFuY2hvcj0iZW5kIj7ku6XliY08L3RleHQ+CiAgICA8cmVjdCB4PSIxMDAiIHk9IjEwMCIgd2lkdGg9Ijc0MCIgaGVpZ2h0PSI0NiIgcng9IjIzIiBmaWxsPSJ1cmwoI2ZyT2spIi8+CiAgICA8dGV4dCB4PSI0NzAiIHk9IjEzMCIgZm9udC1zaXplPSIxNyIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI0ZGRkZGRiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+5omL5YWD44GL44KJ6YGg44GP44G+44Gn44CB44OU44Oz44OI44GM5ZCI44GGPC90ZXh0PgoKICAgIDwhLS0gNDDku6PjgYvjgokgLS0+CiAgICA8dGV4dCB4PSI3MCIgeT0iMjI4IiBmb250LXNpemU9IjE3IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjNUM0QTUyIiB0ZXh0LWFuY2hvcj0iZW5kIj40MOS7o+OBi+OCiTwvdGV4dD4KICAgIDxyZWN0IHg9IjEwMCIgeT0iMjAwIiB3aWR0aD0iNzQwIiBoZWlnaHQ9IjQ2IiByeD0iMjMiIGZpbGw9InVybCgjZnJOZykiLz4KICAgIDx0ZXh0IHg9IjI1NSIgeT0iMjMwIiBmb250LXNpemU9IjE2IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjOEE3QzgyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7lkIjjgYTjgavjgY/jgY/jgarjgos8L3RleHQ+CiAgICA8dGV4dCB4PSI2NTAiIHk9IjIzMCIgZm9udC1zaXplPSIxNiIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI0ZGRkZGRiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+6YGg44GP44Gv5aSJ44KP44KJ44Ga6KaL44GI44KLPC90ZXh0PgoKICAgIDwhLS0g6YGg6L+R5Lih55So44Os44Oz44K6IC0tPgogICAgPHRleHQgeD0iNzAiIHk9IjMyOCIgZm9udC1zaXplPSIxNyIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI0MyNDU2QyIgdGV4dC1hbmNob3I9ImVuZCI+6YGg6L+R5Lih55SoPC90ZXh0PgogICAgPHJlY3QgeD0iMTAwIiB5PSIzMDAiIHdpZHRoPSI3NDAiIGhlaWdodD0iNDYiIHJ4PSIyMyIgZmlsbD0idXJsKCNmck9rKSIvPgogICAgPHRleHQgeD0iNDcwIiB5PSIzMzAiIGZvbnQtc2l6ZT0iMTciIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNGRkZGRkYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjHmnprjgafjgIHjgoLjgYbkuIDluqbjgZzjgpPjgbbjga7ot53pm6Ljgbg8L3RleHQ+CgogICAgPHRleHQgeD0iNDUwIiB5PSIzOTIiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiNBMjk0OUEiIHRleHQtYW5jaG9yPSJtaWRkbGUiPuKAuyDlm7Pjga/jgqTjg6Hjg7zjgrjjgafjgZnjgILjg5Tjg7Pjg4jjgYzlkIjjgYbnr4Tlm7LjgoTopovjgYjmlrnjgavjga/lgIvkurrlt67jgYzjgYLjgorjgb7jgZnjgII8L3RleHQ+CiAgPC9nPgo8L3N2Zz4K" width="900" height="420"
                alt="以前は手元から遠くまでピントが合っていたのに対し、40代以降は手元側が合いにくくなり、遠近両用レンズで再び全ての距離をカバーできることを示した図">
         </figure>
-        <div class="p-reason__grid u-mt-l">
-          <div class="p-reason__item p-reason__item--ng">
-            <h3 class="p-reason__title">都度購入だと</h3>
-            <ul class="p-reason__list">
-              <li>度数が変わるたびに、買い直しの出費</li>
-              <li>「まだ使えるから」と、合わない度数で我慢しがち</li>
-              <li>別のタイプを試したくても、ためらってしまう</li>
-            </ul>
-          </div>
-          <div class="p-reason__item p-reason__item--ok">
-            <h3 class="p-reason__title">定額制なら</h3>
-            <ul class="p-reason__list">
-              <li><strong>度数が変わっても、追加費用なしで交換</strong></li>
-              <li>見え方が変わったら、その都度合わせ直せる</li>
-              <li>1DAY・2WEEK・カラーなど<strong>レンズの種類も変更を相談できる</strong></li>
-              <li>破損・不具合時の交換保証、定期検査までセット</li>
-            </ul>
-          </div>
+        <p class="p-reason__contrast u-mt-l">
+          都度購入だと、度数が変わるたびに<strong>買い直しの出費</strong>。<br>
+          「まだ使えるから」と、合わない度数のまま我慢してしまう方も少なくありません。
+        </p>
+
+        <h3 class="c-subheading u-mt-l">定額制なら、この3つが解決します。</h3>
+        <div class="p-merit">
+          <article class="p-merit__item">
+            <span class="p-merit__no">01</span>
+            <h4 class="p-merit__title">度数が変わっても、<br>買い直さなくていい</h4>
+            <p class="p-merit__text">見え方が変わったら、そのつどレンズを交換。度数の変化のたびに買い直す必要がありません。変化の速いこの世代にいちばん効くメリットです。</p>
+          </article>
+          <article class="p-merit__item">
+            <span class="p-merit__no">02</span>
+            <h4 class="p-merit__title">ほかの種類にも<br>変えられる</h4>
+            <p class="p-merit__text">1DAY・2WEEK・乱視用・カラータイプなど、その時の生活に合うレンズへの変更をご相談いただけます。「試してみたい」を我慢しなくて済みます。</p>
+          </article>
+          <article class="p-merit__item">
+            <span class="p-merit__no">03</span>
+            <h4 class="p-merit__title">破損・不具合にも<br>対応できる</h4>
+            <p class="p-merit__text">破れた、なくした、調子が悪い。そんな万一のときも交換対応でサポート。定期検査までセットなので、長く安心してお使いいただけます。</p>
+          </article>
         </div>
+
         <p class="p-reason__conclusion">
           見え方が変わっていく世代だからこそ、<br>
           <em>「そのとき、いちばん見えるレンズ」を選び続けられる定額制がお得です。</em>

@@ -590,6 +590,26 @@ table { border-collapse: collapse; width: 100%; }
 .p-reason { background: #fff; border-radius: var(--radius-lg); padding: clamp(24px, 4vw, 44px); box-shadow: var(--shadow-sm); }
 .p-reason__lead { text-align: center; font-size: clamp(16px, 2.2vw, 20px); font-weight: 700; line-height: 1.8; }
 .p-reason__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 20px; }
+
+/* 都度購入との対比（1行） */
+.p-reason__contrast {
+  background: #f4f1f2; border-radius: var(--radius); padding: 22px 26px;
+  text-align: center; font-size: 15px; line-height: 1.9; color: #7a6c72;
+}
+.p-reason__contrast strong { color: #6b5b62; }
+
+/* 定額制の3つのメリット */
+.p-merit { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 20px; }
+.p-merit__item {
+  background: var(--c-primary-light); border: 2px solid var(--c-primary);
+  border-radius: var(--radius-lg); padding: 28px 24px; position: relative;
+}
+.p-merit__no {
+  display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 50%;
+  background: var(--c-primary); color: #fff; font-size: 15px; font-weight: 700; margin-bottom: 14px;
+}
+.p-merit__title { font-size: 19px; font-weight: 700; line-height: 1.55; color: var(--c-primary-dark); margin-bottom: 12px; }
+.p-merit__text { font-size: 14px; line-height: 1.9; color: var(--c-text); }
 .p-reason__item { border-radius: var(--radius-lg); padding: 26px 24px; }
 .p-reason__item--ng { background: #f4f1f2; }
 .p-reason__item--ok { background: var(--c-primary-light); border: 2px solid var(--c-primary); }
