@@ -1,3 +1,6 @@
 .DS_Store
 Thumbs.db
 node_modules/
+
+# 確認用の暗号化データ（tools/build-encrypted.js で生成）
+site.bin

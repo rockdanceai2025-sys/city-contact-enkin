@@ -44,7 +44,23 @@ CSS・JS・画像をすべて埋め込んだ1ファイル版です。
 ダウンロードしてダブルクリックすれば、サーバーもネット接続もなしでそのまま開けます。
 ※ 内容を更新したら `python3 tools/build-preview.py` で作り直してください。
 
-### 2. GitHub Pages で URL を発行する
+### 2. クライアント確認用：パスワード付きURL（推奨）
+
+`site.bin`（LPを暗号化したもの）と パスワード入力画面 を**公開用リポジトリ**に置き、
+GitHub Pages で配信します。正しいパスワードを入れたときだけ、ブラウザ内で復号して表示されます。
+
+```bash
+python3 tools/build-preview.py                 # preview.html を生成
+node tools/build-encrypted.js <パスワード>      # preview.html → site.bin
+# 公開用リポジトリに index.html（= tools/gate.html）, site.bin, robots.txt, .nojekyll を置いて push
+```
+
+- `tools/gate.html` … パスワード入力画面（公開側では `index.html` にリネーム）
+- 暗号方式：AES-256-GCM／鍵は PBKDF2-SHA256 25万回
+- **平文のLPは公開リポジトリに置かないこと**（この元データ側リポジトリで管理）
+- パスワードを変更したら `site.bin` を作り直して差し替え、クライアントへ再連絡
+
+### 3. GitHub Pages で URL を発行する（パスワードなし）
 
 1. GitHubのリポジトリを開く → 上部の **Settings**
 2. 左メニューの **Pages**
@@ -60,7 +76,7 @@ GitHub Pagesで公開してもGoogleなどの検索結果には表示されま�
 ただしURLを知っている人は誰でも閲覧できる状態になります（非公開にするにはGitHub Enterpriseが必要）。
 社外に出したくない場合は、`preview.html` をメール等で直接お渡しする方法をおすすめします。
 
-### 3. ローカルでサーバーを立てる（開発者向け）
+### 4. ローカルでサーバーを立てる（開発者向け）
 
 ```bash
 python3 -m http.server 8000
