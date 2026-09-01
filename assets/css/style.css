@@ -533,6 +533,7 @@ table { border-collapse: collapse; width: 100%; }
 
 /* ---------- 動画ブロック ---------- */
 .p-movie-block { max-width: 760px; margin-inline: auto; }
+.p-movie-block--sm { max-width: 480px; }   /* サムネの解像度に合わせて枠を小さく */
 .p-movie {
   display: block; position: relative; width: 100%; aspect-ratio: 16 / 9;
   border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow);
@@ -549,6 +550,13 @@ table { border-collapse: collapse; width: 100%; }
   display: block; width: 74px; height: 74px; margin: 0 auto 10px; border-radius: 50%;
   background: var(--c-primary); position: relative; box-shadow: 0 8px 18px rgba(228, 99, 138, .3);
 }
+/* サムネイル画像の上に重ねる再生ボタン */
+.p-movie > .p-movie__play {
+  position: absolute; left: 50%; top: 50%; translate: -50% -50%; margin: 0;
+  background: rgba(228, 99, 138, .92);
+  transition: transform .25s ease, background-color .25s ease;
+}
+.p-movie:hover > .p-movie__play { background: var(--c-primary-dark); transform: scale(1.06); }
 .p-movie__play::after {
   content: ""; position: absolute; left: 52%; top: 50%; translate: -50% -50%;
   border-left: 20px solid #fff; border-top: 13px solid transparent; border-bottom: 13px solid transparent;
@@ -562,7 +570,7 @@ table { border-collapse: collapse; width: 100%; }
 .p-products--single { grid-template-columns: minmax(min(280px, 100%), 320px) 1fr; align-items: center; }
 .p-product {
   background: #fff; border: 1px solid var(--c-line); border-radius: var(--radius-lg);
-  padding: 20px; display: flex; flex-direction: column;
+  padding: 24px 22px; display: flex; flex-direction: column;
 }
 .p-product__img {
   aspect-ratio: 4 / 3; border-radius: var(--radius); background: var(--c-primary-pale);
