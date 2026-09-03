@@ -26,6 +26,25 @@
     line-height: 1.8;
   }
 
+  /* 復号後は全画面でLPを表示する */
+  html.viewing, body.viewing {
+    height: 100%;
+    padding: 0;
+    display: block;
+    overflow: hidden;
+  }
+
+  body.viewing .card { display: none; }
+
+  #frame {
+    display: none;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  body.viewing #frame { display: block; }
+
   .card {
     width: 100%;
     max-width: 380px;
@@ -127,6 +146,8 @@
   </p>
 </div>
 
+<iframe id="frame" title="旬彩の恵" allow="autoplay; fullscreen"></iframe>
+
 <script>
 (function () {
   'use strict';
@@ -188,21 +209,54 @@
     return files;
   }
 
+  // ページ内リンク（sitemap.html ⇄ index.html）を、復号したデータへ振り替える。
+  // 元のLPは同じフォルダにファイルがある前提で書かれているため。
+  function linkTo(href, lpUrl, mapUrl) {
+    if (href.indexOf('sitemap.html') === 0) {
+      return mapUrl + href.slice('sitemap.html'.length);
+    }
+    if (href.indexOf('index.html') === 0) {
+      return lpUrl + href.slice('index.html'.length);
+    }
+    return null;
+  }
+
   function render(files) {
     var videoUrl = URL.createObjectURL(files['mp4.mp4']);
-    var sitemapUrl = URL.createObjectURL(files['sitemap.html']);
+    var frame = document.getElementById('frame');
 
-    return files['index.html'].text().then(function (html) {
-      // 元のLPは同じフォルダにファイルがある前提なので、
-      // 復号したデータを指すURLに差し替える
-      html = html
-        .split('"mp4.mp4"').join('"' + videoUrl + '"')
-        .split('"sitemap.html"').join('"' + sitemapUrl + '"');
+    return Promise.all([files['index.html'].text(), files['sitemap.html'].text()])
+      .then(function (texts) {
+        var lpHtml = texts[0].split('"mp4.mp4"').join('"' + videoUrl + '"');
+        var type = { type: 'text/html;charset=utf-8' };
+        var lpUrl = URL.createObjectURL(new Blob([lpHtml], type));
+        var mapUrl = URL.createObjectURL(new Blob([texts[1]], type));
 
-      document.open();
-      document.write(html);
-      document.close();
-    });
+        // iframe で開く。document.write で書き出すとページ内のJSが動かないため
+        frame.addEventListener('load', function () {
+          var doc;
+          try { doc = frame.contentDocument; } catch (e) { return; }
+          if (!doc) return;
+
+          if (doc.title) document.title = doc.title;
+
+          doc.addEventListener('click', function (event) {
+            var el = event.target;
+            while (el && el.nodeName !== 'A') el = el.parentElement;
+            if (!el) return;
+
+            var dest = linkTo(el.getAttribute('href') || '', lpUrl, mapUrl);
+            if (dest) {
+              event.preventDefault();
+              frame.src = dest;
+            }
+          });
+        });
+
+        document.documentElement.classList.add('viewing');
+        document.body.classList.add('viewing');
+        frame.src = lpUrl;
+      });
   }
 
   function unlock(password, isAuto) {
