@@ -155,6 +155,11 @@
   var ITERATIONS = 250000;
   var KEY_STORE = 'shunsai-preview-pw';
 
+  // 更新のたびに build_gate.js が書き換える。
+  // 同じファイル名のままだとブラウザが古いデータを使い続けるため、
+  // この値をURLに付けて必ず取り直させる
+  var BUILD = '20260903073016';
+
   var form = document.getElementById('gate');
   var input = document.getElementById('pw');
   var button = document.getElementById('go');
@@ -263,7 +268,7 @@
     button.disabled = true;
     say('読み込んでいます…', false);
 
-    return fetch('site.bin')
+    return fetch('site.bin?v=' + BUILD, { cache: 'no-store' })
       .then(function (res) {
         if (!res.ok) throw new Error('fetch-failed');
         return res.arrayBuffer();
