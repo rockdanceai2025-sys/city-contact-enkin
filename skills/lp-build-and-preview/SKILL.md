@@ -132,6 +132,49 @@ input, select, textarea, button { font-family: inherit; }
 **確認方法**：デベロッパーツール → Elements → Computed の一番下の **Rendered Fonts**。
 Playwright なら CDP の `CSS.getPlatformFontsForNode` で同じ情報が取れる（`references/verify.md` 参照）。
 
+
+### Canva などのデザインツールから素材を持ち込むとき
+
+**Canva には筑紫A丸ゴシック・筑紫B丸ゴシックが入っています。**
+筑紫書体はフォントワークス製で、同社は2021年に Monotype 傘下に入りました。
+macOS にも標準で載っているため、意識せず使ってしまいやすい書体です。
+
+Canva の中で使う分にはCanvaの利用規約の範囲ですが、**そのフォントをLP側に持ち込むのは別問題**です。
+持ち込み方で分かれます。
+
+| 持ち込み方 | 可否 | 理由 |
+| --- | --- | --- |
+| PNG / JPG で書き出す | ○ | 文字が画像に焼き込まれ、フォントの情報は残らない |
+| SVG / PDF で書き出す | ✖ | フォント名やアウトラインが埋め込まれ、配信物に残る |
+| フォントファイルを取り出して webfont にする | ✖ | 明確なライセンス違反 |
+
+**デザインツールの素材は必ずラスター画像で受け取る。**
+SVGで渡されたら、中身に `font-family` や埋め込みフォントがないか必ず開いて確認する。
+
+また、書き出した画像の**メタデータに制作ツール名やフォント名が残る**ことがあります。
+`tools/audit-fonts.js` はそこまで検査します。
+
+### フォント検出クローラーについて
+
+フォントベンダーは、ライセンス確認のためにWebサイトを巡回しています。
+読み取られるのは、**こちらが配信しているファイルの中身**です。
+
+- 読み取れる … CSSの `font-family`、`@font-face`、配信しているフォントファイル、
+  SVG内の `font-family`、画像のメタデータ
+- 読み取れない … ラスター画像に焼き込まれた文字の書体
+
+つまり、**そもそも使わない・置かない状態にしておけば、見つかるものがありません。**
+小細工で隠すのではなく、配信物から完全に排除するのが唯一の正しい対処です。
+
+### 納品前の必須チェック
+
+```bash
+node tools/audit-fonts.js --browser
+```
+
+危険なフォント名や同梱フォントが見つかると終了コード1で落ちます。
+**公開前・納品前に必ず通すこと。** 目視では必ず取りこぼします。
+
 ### A-5. 原稿の注意
 
 制作物が広告である以上、書けないことがある。気づいたら黙って直さず、必ず伝える。
@@ -302,6 +345,7 @@ git clone --depth 1 https://github.com/<owner>/<repo> /home/user/<repo>
 | `scripts/build-preview.py` | `index.html` + `assets/` → 1ファイル版 `preview.html` |
 | `scripts/build-encrypted.js` | `preview.html` → 暗号化した `site.bin` |
 | `assets/gate-template.html` | パスワード入力画面の雛形。`{{ }}` の箇所を案件に合わせて書き換える |
+| `scripts/audit-fonts.js` | フォントのライセンス監査。納品前に必ず通す |
 | `references/verify.md` | ブラウザ検証の手順と、そのまま使えるスクリプト |
 
 `scripts/` の2つは案件の `tools/` にコピーして使う。README にもコマンドを書いておくと、

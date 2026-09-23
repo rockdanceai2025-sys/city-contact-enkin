@@ -186,6 +186,22 @@ Google Fonts が読めない環境では OS 標準のフォントで表示され
 
 `font-family` の指定値は Computed の `font-family` で確認できます。
 
+### 納品前のチェック
+
+```bash
+node tools/audit-fonts.js --browser
+```
+
+危険なフォント名・同梱フォント・画像メタデータの痕跡を検査し、
+見つかれば終了コード1で落ちます。**公開前に必ず通してください。**
+
+### Canva などから素材を持ち込むとき
+
+**Canva には筑紫A丸ゴシック・筑紫B丸ゴシックが入っています**（フォントワークス製、
+同社は2021年に Monotype 傘下）。Canva内で使う分には同社の規約の範囲ですが、
+LP側に持ち込むときは**必ず PNG / JPG で書き出してください。**
+SVG や PDF で書き出すと、フォント名やアウトラインが配信物に残ります。
+
 ### 今後フォントを足すとき
 
 - **Monotype 系**：Helvetica、Arial、Times New Roman、Gill Sans、Futura ほか。
