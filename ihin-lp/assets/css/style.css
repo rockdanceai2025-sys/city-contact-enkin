@@ -38,13 +38,21 @@
   --header-h: 70px;
   --bar-h: 76px;
 
-  --font: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
-  --font-serif: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", serif;
+  /* 名指しするのは SIL Open Font License の Noto のみ。
+     読み込めない環境では、OS標準のゴシック／明朝（generic）に委ねる。 */
+  --font: "Noto Sans JP", sans-serif;
+  --font-serif: "Noto Serif JP", serif;
 }
 
 /* ---------- Reset ---------- */
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 12px); }
+/* ブラウザ標準では html は Times New Roman、フォーム部品は Arial になる。
+   どちらも Monotype のフォントなので、明示的に上書きしておく。 */
+html {
+  font-family: var(--font);
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 12px);
+}
 body {
   margin: 0;
   font-family: var(--font);
@@ -61,7 +69,8 @@ a { color: var(--c-navy); text-decoration: none; transition: opacity .2s ease; }
 a:hover { opacity: .75; }
 ul, ol { margin: 0; padding: 0; list-style: none; }
 h1, h2, h3, h4, p, figure, dl, dd { margin: 0; }
-button { font-family: inherit; cursor: pointer; }
+input, select, textarea, button { font-family: inherit; }
+button { cursor: pointer; }
 table { border-collapse: collapse; width: 100%; }
 :focus-visible { outline: 3px solid var(--c-earth-light); outline-offset: 2px; }
 

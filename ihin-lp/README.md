@@ -158,6 +158,40 @@ python3 tools/build-preview.py   # プレビューも作り直す
 フォントは見出しに `Noto Serif JP`、本文に `Noto Sans JP`（Google Fonts）を使用しています。
 どちらも読み込めない環境ではヒラギノ・游ゴシック等にフォールバックします。
 
+## フォントのライセンス
+
+**配信しているフォントは Noto Sans JP / Noto Serif JP のみ**です（Google Fonts 経由）。
+どちらも SIL Open Font License 1.1 で、商用利用・改変・再配布が無償で認められています。
+
+CSS・SVG のいずれにも、**Monotype 社のフォント（Helvetica・Arial・Times New Roman 等）は
+一切指定していません。** ブラウザの標準指定（`html` は Times New Roman、フォーム部品は Arial）も
+明示的に上書きしてあります。
+
+| 対象 | 指定しているフォント |
+| --- | --- |
+| 本文 | `"Noto Sans JP", sans-serif` |
+| 見出し | `"Noto Serif JP", serif` |
+| SVG内のテキスト（OGP・事例図） | 同上 |
+| ロゴ | フォントを使わない図形のみ（文字のアウトライン化なし） |
+
+フォールバックは `sans-serif` / `serif` の総称のみにしてあります。
+Google Fonts が読めない環境では OS 標準のフォントで表示されますが、
+これは閲覧者の端末にあるフォントが使われるだけで、配信も複製もしていません。
+
+### 確認のしかた（デベロッパーツール）
+
+1. ページを開いて F12 → **Elements**
+2. 要素を選び、右側の **Computed** タブを一番下までスクロール
+3. **Rendered Fonts** に、実際に描画に使われたフォント名が出る
+
+`font-family` の指定値は Computed の `font-family` で確認できます。
+
+### 今後フォントを足すとき
+
+- **Monotype 系**：Helvetica、Arial、Times New Roman、Gill Sans、Futura ほか。
+  日本語では **フォントワークス（筑紫書体・ロダン・マティス等）が2021年に Monotype 傘下**に入っています。
+- 迷ったら、Google Fonts（SIL OFL）か、Adobe Fonts（Creative Cloud 契約の範囲内）に限定するのが安全です。
+
 ## シニア視認性への対応（構成案のご指定）
 
 - 本文の基準フォントサイズを **17px**（スマホ16.5px）に設定

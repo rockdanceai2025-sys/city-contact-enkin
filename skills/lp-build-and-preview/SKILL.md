@@ -94,7 +94,45 @@ Google Fonts が読めない環境でも崩れないよう、ヒラギノ・游�
 表示幅が元画像より大きくなるならレイアウト側（列幅・最大幅）で調整する。
 横長素材を縦長の枠にはめようとすると破綻するので、**素材の縦横比に合わせて列比率を変える**。
 
-### A-4. 原稿の注意
+### A-4. フォントのライセンス
+
+制作物は商用の広告なので、**フォントのライセンスは着手時点で決めておく。**
+あとから差し替えると、行長が変わってレイアウトを組み直すことになる。
+
+名指ししてよいのは、ライセンスが明確なものだけにする。
+**Google Fonts（Noto 等／SIL Open Font License）が無難。**
+
+```css
+--font: "Noto Sans JP", sans-serif;
+--font-serif: "Noto Serif JP", serif;
+```
+
+フォールバックに `"Hiragino Sans"` `"Yu Gothic"` `"Meiryo"` のようなOSフォント名を
+並べるのはよくある書き方だが、**名指しを避けて総称（`sans-serif` / `serif`）だけにしておく**と、
+デベロッパーツールで見たときに商用フォント名が出ない。
+閲覧者の端末にあるフォントが使われるだけなのでライセンス違反にはならないが、
+クライアントに説明する手間が減る。
+
+**避けるもの（Monotype 系）**：Helvetica、Arial、Times New Roman、Gill Sans、Futura ほか。
+日本語では **フォントワークス（筑紫書体・ロダン・マティス等）が2021年に Monotype 傘下**。
+
+**ブラウザの標準指定に注意。** 何も指定しないと `html` は Times New Roman、
+フォーム部品（input・select・textarea・button）は Arial になる。どちらも Monotype なので、
+明示的に上書きしておく。
+
+```css
+html { font-family: var(--font); }
+input, select, textarea, button { font-family: inherit; }
+```
+
+**SVG内のテキストも同じ。** 装飾的なラベル（BEFORE/AFTER 等）に
+うっかり `Helvetica, Arial` と書きがちなので、CSSと同じ指定に揃える。
+ロゴは図形だけで作り、**文字をアウトライン化して埋め込まない**（アウトラインはフォントの派生物になる）。
+
+**確認方法**：デベロッパーツール → Elements → Computed の一番下の **Rendered Fonts**。
+Playwright なら CDP の `CSS.getPlatformFontsForNode` で同じ情報が取れる（`references/verify.md` 参照）。
+
+### A-5. 原稿の注意
 
 制作物が広告である以上、書けないことがある。気づいたら黙って直さず、必ず伝える。
 
@@ -105,7 +143,7 @@ Google Fonts が読めない環境でも崩れないよう、ヒラギノ・游�
 - **事例・お客様の声**：企画書の想定値をそのまま載せると、実績と食い違う。
   READMEに「掲載前に実績と照合すること」を明記する。
 
-### A-5. 検証（省略しない）
+### A-6. 検証（省略しない）
 
 目視だけで済ませず、実際にブラウザで開いて確かめる。`references/verify.md` に手順と
 そのまま使えるスクリプトがある。最低限、次を確認する。
@@ -120,7 +158,7 @@ Google Fonts が読めない環境でも崩れないよう、ヒラギノ・游�
 `.u-sp-only` がボタンの `display` に負けてPCにも表示、CTAが折り返してファーストビューから押し出される。
 **どれもスクリーンショットを見て初めて分かるもの**なので、必ず目で確認する。
 
-### A-6. READMEに書くこと
+### A-7. READMEに書くこと
 
 引き継ぎのために、次を必ず残す。
 

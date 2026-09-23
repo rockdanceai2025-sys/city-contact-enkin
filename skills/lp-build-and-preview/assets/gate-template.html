@@ -18,8 +18,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow, noarchive">
 <title>{{BRAND_NAME}}｜確認用ページ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  /* ブラウザ標準では html は Times New Roman、フォーム部品は Arial になる。
+     どちらも Monotype のフォントなので、明示的に上書きしておく。 */
+  html, input, button { font-family: 'Noto Serif JP', serif; }
 
   :root {
     --navy:  #23415f;
@@ -38,7 +45,7 @@
     padding: 24px;
     background: var(--cream);
     color: var(--navy-dark);
-    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+    font-family: 'Noto Serif JP', serif;
     line-height: 1.8;
   }
 

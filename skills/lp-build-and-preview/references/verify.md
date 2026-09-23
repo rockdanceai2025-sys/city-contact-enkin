@@ -115,3 +115,32 @@ sleep 2
 | スマホ専用の要素がPCにも出る | `.u-sp-only { display:none }` が、後続の `.btn { display:inline-flex }` に負けている |
 | CTAがファーストビューから押し出される | 列幅を変えた結果、ボタンが折り返して縦に伸びた |
 | カードの下線の位置が揃わない | 見出しの行数がカードごとに違う（`min-height` で揃える） |
+
+## 7. フォントの監査
+
+ライセンスの都合で、**何を宣言していて、実際に何で描画されたか**の両方を見る。
+
+宣言側（CSSの指定値）：
+
+```js
+await p.evaluate(() => {
+  const set = new Set();
+  document.querySelectorAll('*').forEach(el => set.add(getComputedStyle(el).fontFamily));
+  return [...set].sort();
+});
+```
+
+描画側（デベロッパーツールの **Rendered Fonts** と同じ情報）：
+
+```js
+const cdp = await p.context().newCDPSession(p);
+await cdp.send('DOM.enable'); await cdp.send('CSS.enable');
+const { root } = await cdp.send('DOM.getDocument', { depth: -1 });
+// 各ノードで CSS.getPlatformFontsForNode({ nodeId }) を呼ぶ
+```
+
+`Arial` や `Times New Roman` が出たら、**ブラウザの標準指定を上書きし忘れている**。
+`html` と フォーム部品（input・select・textarea・button）を疑う。
+
+検証環境にはフォントがほとんど入っていないため、描画側の結果は本番と一致しない。
+**宣言側の監査が本命**で、描画側は「意図しない名前が混ざっていないか」の確認に使う。
