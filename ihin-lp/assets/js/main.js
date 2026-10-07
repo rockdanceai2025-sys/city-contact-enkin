@@ -57,7 +57,7 @@
     }
     notice.textContent =
       'こちらは表示確認用のページのため、まだ送信先が設定されていません。'
-      + 'お急ぎの場合は、お電話（0120-000-000）にてご相談ください。';
+      + 'お急ぎの場合は、お電話（0120-373-880）にてご相談ください。';
     notice.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
   });
 })();
