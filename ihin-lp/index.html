@@ -637,7 +637,9 @@
                本番では action / method をご利用のフォームシステム
                （CMS・メールフォームサービス等）に合わせて設定してください。
              ============================================================ -->
-        <form class="p-form" id="js-form" action="#" method="post" novalidate>
+        <!-- data-mailto … フォームシステム未接続のあいだの送信先。
+     action に実際の送信先を設定すると、そちらが優先されます。 -->
+        <form class="p-form" id="js-form" action="#" method="post" novalidate data-mailto="tsumugi@tsumugi-lp.net">
           <div class="p-form__row">
             <label class="p-form__label" for="f-name">お名前<span class="p-form__req">必須</span></label>
             <input type="text" id="f-name" name="name" autocomplete="name" placeholder="福岡 太郎" required>
@@ -681,7 +683,8 @@
           <button class="p-form__submit" type="submit">無料で見積もりを依頼する</button>
           <p class="p-form__privacy">
             お預かりした個人情報は、ご相談への回答とお見積もりのご案内のみに使用いたします。<br>
-            送信いただいた内容は、担当者より1営業日以内にご連絡いたします。
+            送信いただいた内容は、担当者より1営業日以内にご連絡いたします。<br>
+            メールで直接お送りいただいても構いません：<a href="mailto:tsumugi@tsumugi-lp.net">tsumugi@tsumugi-lp.net</a>
           </p>
         </form>
       </div>
@@ -720,9 +723,9 @@
       </div>
       <dl class="l-footer__dl">
         <dt>屋号</dt><dd>片づけ処 つむぎ</dd>
-        <!-- 郵便番号・丁目番地が未確認です。判明したら追記してください -->
         <dt>所在地</dt><dd>福岡県久留米市国分町</dd>
         <dt>電話番号</dt><dd><a href="tel:0120373880">0120-373-880</a></dd>
+        <dt>メール</dt><dd><a href="mailto:tsumugi@tsumugi-lp.net">tsumugi@tsumugi-lp.net</a></dd>
         <dt>受付時間</dt><dd>8:00〜20:00（土日祝も対応・年中無休）</dd>
         <dt>事業内容</dt><dd>遺品整理／生前整理／空き家整理／不用品買取／遺品供養の手配</dd>
         <dt>古物商許可</dt><dd>福岡県公安委員会 第904011610007号</dd>
