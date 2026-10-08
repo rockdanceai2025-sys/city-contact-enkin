@@ -680,6 +680,11 @@
             <label class="p-form__label" for="f-msg">ご相談内容<span class="p-form__req is-any">任意</span></label>
             <textarea id="f-msg" name="message" placeholder="ご状況やご希望の時期など、差し支えのない範囲でお書きください。"></textarea>
           </div>
+          <!-- 迷惑メール対策。人には見えない項目で、入力があれば機械による送信とみなす -->
+          <div style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden" aria-hidden="true">
+            <label for="f-website">ご記入不要です</label>
+            <input type="text" id="f-website" name="website" tabindex="-1" autocomplete="off">
+          </div>
           <button class="p-form__submit" type="submit">無料で見積もりを依頼する</button>
           <p class="p-form__privacy">
             お預かりした個人情報は、ご相談への回答とお見積もりのご案内のみに使用いたします。<br>
