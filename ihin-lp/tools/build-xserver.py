@@ -8,6 +8,7 @@
   index.html   … フォームの送信先を form.php に設定したもの
   assets/      … CSS・JS・画像
   form.php     … フォームを受け取ってメールを送るプログラム
+  .htaccess    … http を https へ転送する設定
 
 この中身を、エックスサーバーの public_html に丸ごと置いてください。
 """
@@ -37,6 +38,7 @@ html = html.replace('<!-- ▲▲▲ 本番公開前に、上の1行を削除 ▲
 (OUT / 'index.html').write_text(html, encoding='utf-8')
 shutil.copytree(ROOT / 'assets', OUT / 'assets')
 shutil.copy(ROOT / 'server' / 'form.php', OUT / 'form.php')
+shutil.copy(ROOT / 'server' / '.htaccess', OUT / '.htaccess')
 
 total = sum(f.stat().st_size for f in OUT.rglob('*') if f.is_file())
 count = sum(1 for f in OUT.rglob('*') if f.is_file())

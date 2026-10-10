@@ -1,0 +1,12 @@
+# ------------------------------------------------------------
+# http:// でアクセスされたとき、https:// へ自動的に転送します。
+# SSLを有効にしたあとに効果が出ます。
+#
+# もしアップロード後にサイトが「500 Internal Server Error」に
+# なった場合は、このファイルを削除すれば元に戻ります。
+# ------------------------------------------------------------
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{HTTPS} !on
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+</IfModule>
